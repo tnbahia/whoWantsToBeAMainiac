@@ -13,4 +13,9 @@ public class LoginController extends AbstractController{
     public void setQuestionController(QuestionController questionController) {
         this.questionController = questionController;
     }
+
+    public void setPlayerName(String name){
+        
+    }
+
 }
