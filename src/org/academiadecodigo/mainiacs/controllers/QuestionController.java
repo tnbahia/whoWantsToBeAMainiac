@@ -19,6 +19,7 @@ public class QuestionController extends AbstractController {
                     try {
                         playersWaiting++;
                         if (playersWaiting != 4) {
+                            System.out.println("Chegou aqui tambem");
                             wait();
                         }
                         notifyAll();
