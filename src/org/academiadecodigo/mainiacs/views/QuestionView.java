@@ -10,19 +10,25 @@ import java.net.Socket;
 
 public class QuestionView extends AbstractView {
 
+    QuestionController questionController;
+
     @Override
     public void show() {
-        Socket socket = ((QuestionController)controller).getSocket();
+        Socket socket = questionController.getSocket();
         Prompt prompt = null;
         try {
             prompt = new Prompt(socket.getInputStream(), new PrintStream(socket.getOutputStream()));
         } catch (IOException e) {
             e.printStackTrace();
         }
-        MenuInputScanner menuInputScanner = new MenuInputScanner(((QuestionController) controller).getOptions());
-        menuInputScanner.setMessage(((QuestionController) controller).getQuestion();
+        MenuInputScanner menuInputScanner = new MenuInputScanner(questionController.getOptions());
+        menuInputScanner.setMessage(questionController.getQuestion());
         int answer = prompt.getUserInput(menuInputScanner);
-        ((QuestionController)controller).setAnswer(answer);
+        questionController.setAnswer(answer);
+    }
+
+    public void setQuestionController(QuestionController questionController){
+        this.questionController = questionController;
     }
 
 }

@@ -29,6 +29,7 @@ public class QuestionController extends AbstractController {
 
             }
             playersWaiting = 0;
+            questionView.setQuestionController(this);
             questionView.show();
             loop();
     }
@@ -46,15 +47,15 @@ public class QuestionController extends AbstractController {
         this.scoreController = scoreController;
     }
 
-    public void getQuestion() {
-        game.getQuestion;
+    public String getQuestion() {
+        return game.getQuestion();
     }
 
     public String[] getOptions() {
         return game.getOptions();
     }
 
-    public void setAnwser(int answer) {
+    public void setAnswer(int answer) {
         game.checkAnwser(answer);
     }
 
