@@ -11,7 +11,7 @@ public class LoginController extends AbstractController{
     private LoginView loginView;
     private Socket socket;
     private Player player;
-    private Game game;
+    //private Game game;
 
     @Override
     public void init() {

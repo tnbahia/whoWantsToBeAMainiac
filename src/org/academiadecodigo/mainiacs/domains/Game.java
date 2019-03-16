@@ -30,5 +30,8 @@ public class Game {
         return ranking;
     }
 
+    public String getNamePlayer(){
+        return "name";
+    }
 
 }
