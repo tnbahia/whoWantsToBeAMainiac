@@ -28,7 +28,7 @@ public class ScoreController extends AbstractController {
         }
     }
 
-    public String getRack(){
+    public String getRank(){
         return game.rank();
     }
 

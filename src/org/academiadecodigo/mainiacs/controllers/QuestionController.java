@@ -60,8 +60,8 @@ public class QuestionController extends AbstractController {
     /**
      * Gets String question from the game.
      */
-    public void getQuestion() {
-        game.getQuestion();
+    public String getQuestion() {
+        return game.getQuestion();
     }
     
     /**

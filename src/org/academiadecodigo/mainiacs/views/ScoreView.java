@@ -1,6 +1,5 @@
 package org.academiadecodigo.mainiacs.views;
 
-
 import org.academiadecodigo.bootcamp.Prompt;
 import org.academiadecodigo.bootcamp.scanners.menu.MenuInputScanner;
 import org.academiadecodigo.mainiacs.controllers.ScoreController;
@@ -21,7 +20,7 @@ public class ScoreView extends AbstractView {
             e.printStackTrace();
         }
 
-        System.out.println(((ScoreController)controller).getRack());
+        System.out.println(((ScoreController)controller).getRank());
 
         String[] options = {"Yes", "No"};
         MenuInputScanner menuInputScanner = new MenuInputScanner(options);

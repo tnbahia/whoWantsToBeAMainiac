@@ -9,7 +9,8 @@ import java.io.PrintStream;
 import java.net.Socket;
 
 /**
- *
+ * View of the Question part.
+ * Deals with showing the questions to the player.
  */
 
 public class QuestionView extends AbstractView {
@@ -28,7 +29,7 @@ public class QuestionView extends AbstractView {
             e.printStackTrace();
         }
         MenuInputScanner menuInputScanner = new MenuInputScanner(((QuestionController) controller).getOptions());
-        menuInputScanner.setMessage(((QuestionController) controller).getQuestion();
+        menuInputScanner.setMessage(((QuestionController) controller).getQuestion());
         int answer = prompt.getUserInput(menuInputScanner);
         ((QuestionController)controller).setAnswer(answer);
     }

@@ -16,6 +16,9 @@ public class Game {
     public String[] getOptions() {
     }
     
-    public void getQuestion() {
+    public String getQuestion() {
+    }
+    
+    public String rank() {
     }
 }
