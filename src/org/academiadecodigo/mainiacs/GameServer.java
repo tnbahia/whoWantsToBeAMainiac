@@ -7,6 +7,11 @@ import java.io.IOException;
 import java.net.ServerSocket;
 import java.net.Socket;
 
+/**
+ * Class that starts the game.
+ * Creates the socket and waits for players connections, creating a thread for each player.
+ */
+
 public class GameServer {
     private static final int DEFAULT_PORT = 8080;
 
