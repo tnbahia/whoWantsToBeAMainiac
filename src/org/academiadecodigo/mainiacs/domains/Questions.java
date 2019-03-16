@@ -332,12 +332,12 @@ public enum Questions {
                     "4",
                     "2"},
             1),
-    QUESTION_48("",
+    QUESTION_48("What are the three types of Thread Pools we know?",
             new String[]{
-                    "",
-                    "",
-                    "",
-                    ""},
+                    "Single Thread, Multithread",
+                    "Fixed Thread Pool, Cached Thread Pool",
+                    "Concurrent Threads, Multithreads",
+                    "Single Thread, Multiple Threads"},
             2),
     QUESTION_49("How can you create a thread?",
             new String[]{
