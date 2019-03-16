@@ -18,7 +18,7 @@ public class GameServer {
     public static void main(String[] args) {
         try {
             ServerSocket serverSocket = new ServerSocket(DEFAULT_PORT);
-            Game game = new Game();
+            final Game game = new Game();
 
             int playersLoggedIn = 0;
             while (playersLoggedIn < 4) {
@@ -29,6 +29,7 @@ public class GameServer {
                         LoginController loginController = new LoginController();
                         loginController.setSocket(newPlayer);
                         loginController.setGame(game);
+                        System.out.println("entrou um");
                         loginController.init();
                     }
                 }).start();

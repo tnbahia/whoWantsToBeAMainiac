@@ -1,7 +1,5 @@
 package org.academiadecodigo.mainiacs.controllers;
 
-
-import org.academiadecodigo.mainiacs.domains.Game;
 import org.academiadecodigo.mainiacs.views.QuestionView;
 
 import java.net.Socket;
@@ -15,9 +13,8 @@ public class QuestionController extends AbstractController {
     private ScoreController scoreController;
     private Socket socket;
     private QuestionView questionView = new QuestionView();
-    static int playersWaiting = 0;
-    private int questionNumber = 0;
-    //private Game game;
+    static volatile int playersWaiting = 0;
+    private int round = 0;
     
     /**
      * Sets the loop for the questions.
@@ -25,7 +22,7 @@ public class QuestionController extends AbstractController {
      */
 
     @Override
-    public /*synchronized*/ void init() {
+    public void init() {
             synchronized (game) {
                 while (playersWaiting < 4) {
                      try {
@@ -34,21 +31,21 @@ public class QuestionController extends AbstractController {
                             System.out.println("Chegou aqui tambem");
                             wait();
                         }
-                        notifyAll();
                     } catch (InterruptedException e) {
-                        e.printStackTrace();
-                    }
+                         e.printStackTrace();
+                     }
                 }
+                playersWaiting--;
+                notifyAll();
             }
-            playersWaiting = 0;
             questionView.setQuestionController(this);
             questionView.show();
             loop();
     }
 
     public void loop() {
-        if ( questionNumber != 10 ) {
-            questionNumber++;
+        if ( round != 10 ) {
+            round++;
             init();
         }
         scoreController.setSocket(socket);
@@ -69,7 +66,7 @@ public class QuestionController extends AbstractController {
      */
 
     public String getQuestion() {
-        return game.getQuestion();
+        return game.getQuestion(round);
     }
     
     /**
@@ -77,7 +74,7 @@ public class QuestionController extends AbstractController {
      * @return
      */
     public String[] getOptions() {
-        return game.getOptions();
+        return game.getOptions(round);
     }
 
     /**
@@ -85,10 +82,7 @@ public class QuestionController extends AbstractController {
      * @param answer
      */
     public void setAnswer(int answer) {
-        game.checkAnswer(answer);
-
-    public void setAnswer(int answer) {
-        game.checkAnwser(answer);
+        game.setAnswer(socket, round, answer);
     }
     
     /**
@@ -105,9 +99,5 @@ public class QuestionController extends AbstractController {
      */
     public Socket getSocket() {
         return socket;
-    }
-
-    public void setGame(Game game){
-        this.game = game;
     }
 }
