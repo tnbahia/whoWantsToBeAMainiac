@@ -14,7 +14,7 @@ public class QuestionController extends AbstractController {
     private Socket socket;
     private QuestionView questionView = new QuestionView();
     static volatile int playersWaiting = 0;
-    private int questionNumber = 0;
+    private int round = 0;
     
     /**
      * Sets the loop for the questions.
@@ -44,8 +44,8 @@ public class QuestionController extends AbstractController {
     }
 
     public void loop() {
-        if ( questionNumber != 10 ) {
-            questionNumber++;
+        if ( round != 10 ) {
+            round++;
             init();
         }
         scoreController.setSocket(socket);
@@ -66,7 +66,7 @@ public class QuestionController extends AbstractController {
      */
 
     public String getQuestion() {
-        return game.getQuestion();
+        return game.getQuestion(round);
     }
     
     /**
@@ -74,7 +74,7 @@ public class QuestionController extends AbstractController {
      * @return
      */
     public String[] getOptions() {
-        return game.getOptions();
+        return game.getOptions(round);
     }
 
     /**
@@ -82,7 +82,7 @@ public class QuestionController extends AbstractController {
      * @param answer
      */
     public void setAnswer(int answer) {
-        game.checkAnswer(answer);
+        game.setAnswer(answer, round);
     }
     
     /**

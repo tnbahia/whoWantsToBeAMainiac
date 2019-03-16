@@ -36,7 +36,7 @@ public class LoginController extends AbstractController{
      * @param name
      */
     public boolean addPlayer(String name){
-        return game.addPlayer(name);
+        return game.addPlayer(socket, name);
     }
     
     /**
