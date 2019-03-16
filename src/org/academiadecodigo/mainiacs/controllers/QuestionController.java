@@ -1,6 +1,7 @@
 package org.academiadecodigo.mainiacs.controllers;
 
 
+import org.academiadecodigo.mainiacs.domains.Game;
 import org.academiadecodigo.mainiacs.views.QuestionView;
 
 import java.net.Socket;
@@ -11,10 +12,11 @@ public class QuestionController extends AbstractController {
     private QuestionView questionView = new QuestionView();
     static int playersWaiting = 0;
     private int questionNumber = 0;
+    private Game game;
 
     @Override
     public void init() {
-            synchronized (game) { 
+            //synchronized (game) {
                 while (playersWaiting < 4) {
                     try {
                         playersWaiting++;
@@ -28,7 +30,7 @@ public class QuestionController extends AbstractController {
                     }
                 }
 
-            }
+           // }
             playersWaiting = 0;
             questionView.setQuestionController(this);
             questionView.show();
@@ -66,5 +68,9 @@ public class QuestionController extends AbstractController {
 
     public Socket getSocket() {
         return socket;
+    }
+
+    public void setGame(Game game){
+        this.game = game;
     }
 }
