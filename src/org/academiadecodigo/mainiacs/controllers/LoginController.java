@@ -20,6 +20,7 @@ public class LoginController extends AbstractController{
         loginView.show();
         questionController = new QuestionController();
         questionController.setSocket(socket);
+        questionController.setGame(game);
         questionController.init();
     }
 
