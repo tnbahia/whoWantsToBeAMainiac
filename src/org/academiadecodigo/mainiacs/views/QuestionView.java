@@ -18,7 +18,6 @@ public class QuestionView extends AbstractView {
     /**
      * Implements the method show with the Questions.
      */
-    
     @Override
     public void show() {
         Socket socket = ((QuestionController)controller).getSocket();
