@@ -38,6 +38,7 @@ public class QuestionController extends AbstractController {
             questionNumber++;
             init();
         }
+        scoreController.setSocket(socket);
         scoreController.init();
     }
 

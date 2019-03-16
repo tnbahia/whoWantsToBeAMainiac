@@ -22,7 +22,7 @@ public class GameServer {
                     @Override
                     public void run() {
                         LoginController loginController = new LoginController();
-                        //loginController.setSocket(newPlayer);
+                        loginController.setSocket(newPlayer);
                         loginController.setGame(game);
                         loginController.init();
                     }
