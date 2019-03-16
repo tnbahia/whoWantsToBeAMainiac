@@ -8,8 +8,16 @@ import java.io.IOException;
 import java.io.PrintStream;
 import java.net.Socket;
 
-public class QuestionView extends AbstractView {
+/**
+ *
+ */
 
+public class QuestionView extends AbstractView {
+    
+    /**
+     * Implements the method show with the Questions.
+     */
+    
     @Override
     public void show() {
         Socket socket = ((QuestionController)controller).getSocket();
@@ -24,5 +32,4 @@ public class QuestionView extends AbstractView {
         int answer = prompt.getUserInput(menuInputScanner);
         ((QuestionController)controller).setAnswer(answer);
     }
-
 }

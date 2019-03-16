@@ -9,4 +9,13 @@ public class Game {
     
     public void addPlayer(Player player) {
     }
+    
+    public void checkAnswer(int answer) {
+    }
+    
+    public String[] getOptions() {
+    }
+    
+    public void getQuestion() {
+    }
 }
