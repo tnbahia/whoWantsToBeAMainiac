@@ -10,24 +10,29 @@ import java.net.Socket;
 
 public class LoginView extends AbstractView {
 
+    LoginController loginController;
+
     @Override
     public void show() {
 
-        Socket socket = ((LoginController) controller).getSocket();
 
+        Socket socket = loginController.getSocket();
         Prompt prompt = null;
         try {
+            //prompt = new Prompt(System.in, System.out);
             prompt = new Prompt(socket.getInputStream(), new PrintStream(socket.getOutputStream()));
         } catch (IOException e) {
             e.printStackTrace();
         }
         StringInputScanner scanner = new StringInputScanner();
-        scanner.setMessage("Input Login");
+        scanner.setMessage("Input User: ");
         //scanner.setMessage(Messages.LOGIN_PLAYER);
         //scanner.setError(Messages.ERROR_INVALID_PLAYER);
         String playerName = prompt.getUserInput(scanner);
-        ((LoginController) controller).setPlayer(playerName);
+        loginController.setPlayer(playerName);
+    }
 
-
+    public void setLoginController(LoginController loginController){
+        this.loginController = loginController;
     }
 }
