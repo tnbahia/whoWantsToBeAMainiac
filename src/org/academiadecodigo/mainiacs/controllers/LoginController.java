@@ -28,7 +28,8 @@ public class LoginController extends AbstractController{
         questionController.setSocket(socket);
         questionController.init();
     }
-    
+
+
     /**
      * Sets the player in question. Takes a String as an argument that will be stored as the player name.
      * @param name
@@ -38,7 +39,7 @@ public class LoginController extends AbstractController{
         game.addPlayer(player);
         System.out.println("chegou aqui");
     }
-    
+
     /**
      * Sets the socket to allow the communication to the player terminal.
      * @param socket

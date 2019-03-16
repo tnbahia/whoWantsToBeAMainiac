@@ -3,6 +3,7 @@ package org.academiadecodigo.mainiacs.views;
 import org.academiadecodigo.bootcamp.Prompt;
 import org.academiadecodigo.bootcamp.scanners.menu.MenuInputScanner;
 import org.academiadecodigo.mainiacs.controllers.ScoreController;
+import org.academiadecodigo.mainiacs.utils.Messages;
 
 import java.io.IOException;
 import java.io.PrintStream;
@@ -30,9 +31,9 @@ public class ScoreView extends AbstractView {
 
         System.out.println(((ScoreController)controller).getRank());
 
-        String[] options = {"Yes", "No"};
+        String[] options = {Messages.YES, Messages.NO};
         MenuInputScanner menuInputScanner = new MenuInputScanner(options);
-        menuInputScanner.setMessage("Restart Game?");
+        menuInputScanner.setMessage(Messages.GAME_RESTART);
         int answer = prompt.getUserInput(menuInputScanner);
         ((ScoreController)controller).setRestart(answer);
     }
