@@ -5,6 +5,9 @@ import org.academiadecodigo.mainiacs.views.LoginView;
 
 import java.net.Socket;
 
+/**
+ *
+ */
 
 public class LoginController extends AbstractController{
     private QuestionController questionController;

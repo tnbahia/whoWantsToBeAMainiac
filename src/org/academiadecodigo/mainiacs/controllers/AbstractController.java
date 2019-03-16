@@ -3,6 +3,10 @@ package org.academiadecodigo.mainiacs.controllers;
 import org.academiadecodigo.mainiacs.domains.Game;
 import org.academiadecodigo.mainiacs.views.View;
 
+/**
+ * Class to define the basic functions of a controller
+ */
+
 public abstract class AbstractController implements Controller {
     protected View view;
     protected Game game;
