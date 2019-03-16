@@ -17,7 +17,7 @@ public class QuestionController extends AbstractController {
     private QuestionView questionView = new QuestionView();
     static int playersWaiting = 0;
     private int questionNumber = 0;
-    //private Game game;
+    private Game game;
     
     /**
      * Sets the loop for the questions.
@@ -86,9 +86,6 @@ public class QuestionController extends AbstractController {
      */
     public void setAnswer(int answer) {
         game.checkAnswer(answer);
-
-    public void setAnswer(int answer) {
-        game.checkAnwser(answer);
     }
     
     /**

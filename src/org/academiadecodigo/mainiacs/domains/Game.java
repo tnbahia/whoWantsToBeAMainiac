@@ -8,22 +8,26 @@ public class Game {
     private LinkedList<Integer> questionsAsked;
 
 
-    public  String[] getOptions(){
-        String[] options = Questions.values()[0].getOptions();
-        return options;
-    }
-
-    public void checkAnwser(int answer){
-
-    }
-
     public String getQuestion(){
         String question = Questions.values()[0].getQuestion();
         return question;
     }
 
-    public void addPlayer(Player player){
+    public  String[] getOptions(){
+        String[] options = Questions.values()[0].getOptions();
+        return options;
+    }
 
+    public void checkAnswer(int answer){
+
+    }
+
+    public boolean addPlayer(String name){
+        if (players.keySet().contains(name)) {
+            return false;
+        }
+        players.put(name,new Player(name));
+        return true;
     }
 
     public String rank(){

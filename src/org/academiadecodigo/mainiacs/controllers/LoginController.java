@@ -14,7 +14,6 @@ public class LoginController extends AbstractController{
     private QuestionController questionController;
     private LoginView loginView;
     private Socket socket;
-    private Player player;
     //private Game game;
     
     /**
@@ -37,8 +36,7 @@ public class LoginController extends AbstractController{
      * @param name
      */
     public void setPlayer(String name){
-        player = new Player(name);
-        game.addPlayer(player);
+        game.addPlayer(name);
         System.out.println("chegou aqui");
     }
     
