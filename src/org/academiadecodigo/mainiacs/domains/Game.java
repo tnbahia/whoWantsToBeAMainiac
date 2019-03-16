@@ -24,4 +24,11 @@ public class Game {
     public void addPlayer(Player player){
 
     }
+
+    public String rank(){
+        String ranking = "";
+        return ranking;
+    }
+
+
 }
