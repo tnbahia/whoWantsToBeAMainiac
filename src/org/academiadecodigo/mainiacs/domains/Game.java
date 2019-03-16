@@ -6,19 +6,29 @@ import java.util.LinkedList;
 public class Game {
     private HashMap<String,Player> players;
     private LinkedList<Integer> questionsAsked;
-    
-    public void addPlayer(Player player) {
+
+
+    public  String[] getOptions(){
+        String[] options = Questions.values()[0].getOptions();
+        return options;
     }
-    
-    public void checkAnswer(int answer) {
+
+    public void checkAnwser(int answer){
+
     }
-    
-    public String[] getOptions() {
+
+    public String getQuestion(){
+        String question = Questions.values()[0].getQuestion();
+        return question;
     }
-    
-    public String getQuestion() {
+
+    public void addPlayer(Player player){
+
     }
-    
-    public String rank() {
+
+    public String rank(){
+        String ranking = "";
+        return ranking;
     }
+
 }

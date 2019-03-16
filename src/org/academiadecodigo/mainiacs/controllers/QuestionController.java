@@ -1,5 +1,7 @@
 package org.academiadecodigo.mainiacs.controllers;
 
+
+import org.academiadecodigo.mainiacs.domains.Game;
 import org.academiadecodigo.mainiacs.views.QuestionView;
 
 import java.net.Socket;
@@ -15,18 +17,21 @@ public class QuestionController extends AbstractController {
     private QuestionView questionView = new QuestionView();
     static int playersWaiting = 0;
     private int questionNumber = 0;
+    //private Game game;
     
     /**
      * Sets the loop for the questions.
      * Ensures the questions are all sent at the same time.
      */
+
     @Override
-    public void init() {
-            synchronized (game) { 
+    public /*synchronized*/ void init() {
+            synchronized (game) {
                 while (playersWaiting < 4) {
-                    try {
-                        playersWaiting++;
+                     try {
+                         playersWaiting++;
                         if (playersWaiting != 4) {
+                            System.out.println("Chegou aqui tambem");
                             wait();
                         }
                         notifyAll();
@@ -36,6 +41,7 @@ public class QuestionController extends AbstractController {
                 }
             }
             playersWaiting = 0;
+            questionView.setQuestionController(this);
             questionView.show();
             loop();
     }
@@ -46,6 +52,7 @@ public class QuestionController extends AbstractController {
             init();
         }
         scoreController.setSocket(socket);
+        scoreController.setGame(game);
         scoreController.init();
     }
     
@@ -60,6 +67,7 @@ public class QuestionController extends AbstractController {
     /**
      * Gets String question from the game.
      */
+
     public String getQuestion() {
         return game.getQuestion();
     }
@@ -71,13 +79,16 @@ public class QuestionController extends AbstractController {
     public String[] getOptions() {
         return game.getOptions();
     }
-    
+
     /**
      * Checks if the answer was correct or not.
      * @param answer
      */
     public void setAnswer(int answer) {
         game.checkAnswer(answer);
+
+    public void setAnswer(int answer) {
+        game.checkAnwser(answer);
     }
     
     /**
@@ -94,5 +105,9 @@ public class QuestionController extends AbstractController {
      */
     public Socket getSocket() {
         return socket;
+    }
+
+    public void setGame(Game game){
+        this.game = game;
     }
 }

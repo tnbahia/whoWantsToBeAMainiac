@@ -15,10 +15,12 @@ public class LoginController extends AbstractController{
     private LoginView loginView;
     private Socket socket;
     private Player player;
+    //private Game game;
     
     /**
      * Method to initialize the controller itself.
      */
+
     @Override
     public void init() {
         loginView = new LoginView();
@@ -26,6 +28,7 @@ public class LoginController extends AbstractController{
         loginView.show();
         questionController = new QuestionController();
         questionController.setSocket(socket);
+        questionController.setGame(game);
         questionController.init();
     }
     
