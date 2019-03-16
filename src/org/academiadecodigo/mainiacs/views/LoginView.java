@@ -8,8 +8,16 @@ import java.io.IOException;
 import java.io.PrintStream;
 import java.net.Socket;
 
-public class LoginView extends AbstractView {
+/**
+ * View of the login part of the app.
+ * Deals with setting up connection and accept the login itself.
+ */
 
+public class LoginView extends AbstractView {
+    
+    /**
+     * Implements the method show with the Login information.
+     */
     @Override
     public void show() {
 
@@ -27,7 +35,5 @@ public class LoginView extends AbstractView {
         //scanner.setError(Messages.ERROR_INVALID_PLAYER);
         String playerName = prompt.getUserInput(scanner);
         ((LoginController) controller).setPlayer(playerName);
-
-
     }
 }
