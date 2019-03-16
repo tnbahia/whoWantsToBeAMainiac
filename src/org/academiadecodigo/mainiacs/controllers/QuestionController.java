@@ -82,7 +82,7 @@ public class QuestionController extends AbstractController {
      * @param answer
      */
     public void setAnswer(int answer) {
-        game.setAnswer(answer, round);
+        game.setAnswer(socket, round, answer);
     }
     
     /**

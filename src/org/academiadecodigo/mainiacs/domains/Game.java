@@ -26,8 +26,15 @@ public class Game {
         return Questions.values()[questionNumber].getOptions();
     }
 
-    public void setAnswer(int answer, int round) {
+    public void setAnswer(Socket socket, int round, int answer) {
+        if (checkAnswer(round, answer)) {
+            players.get(socket).setScore(1);
+        }
+    }
 
+    private boolean checkAnswer(int round, int answer) {
+        int question = questionsToAsk[round];
+        return Questions.values()[question].getRightAnswer() == answer;
     }
 
     public boolean addPlayer(Socket socket, String name) {
@@ -48,10 +55,17 @@ public class Game {
     }
 
     public String rank() {
-        String ranking = "";
-        return ranking;
+        HashMap<String, Integer> results = new HashMap<>();
+        for (Player player : players.values()) {
+            results.put(player.getName(),player.getScore());
+        }
+        StringBuilder s = new StringBuilder();
+        for (String name : results.keySet()) {
+            s.append(name);
+            s.append(" - ");
+            s.append(results.get(name));
+            s.append("\n");
+        }
+        return s.toString();
     }
-
-
-
 }
