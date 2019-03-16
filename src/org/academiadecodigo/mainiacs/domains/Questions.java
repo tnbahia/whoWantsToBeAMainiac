@@ -1,5 +1,9 @@
 package org.academiadecodigo.mainiacs.domains;
 
+/**
+ * List of all questions and respective answers and methods.
+ */
+
 public enum Questions {
     
     QUESTION_1("Whose wife was stalked in their honeymoon?",
@@ -357,21 +361,40 @@ public enum Questions {
     private String question;
     private String[] options;
     private int rightAnswer;
-
+    
+    
+    /**
+     * Constructor for the question itself. Takes three parameters:
+     * @param question
+     * @param options
+     * @param rightAnswer
+     */
     Questions(String question, String[] options, int rightAnswer) {
         this.question = question;
         this.options = options;
         this.rightAnswer = rightAnswer;
     }
-
+    
+    /**
+     * Method to return the question as a String.
+     * @return
+     */
     public String getQuestion() {
         return question;
     }
-
+    
+    /**
+     * Method to return an array of Strings to form the options.
+     * @return
+     */
     public String[] getOptions() {
         return options;
     }
-
+    
+    /**
+     * Method to return the number (as shown to the player) of the right answer.
+     * @return
+     */
     public int getRightAnswer() {
         return rightAnswer;
     }

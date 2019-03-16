@@ -8,14 +8,20 @@ import java.io.IOException;
 import java.io.PrintStream;
 import java.net.Socket;
 
+/**
+ * View of the login part of the app.
+ * Deals with setting up connection and accept the login itself.
+ */
+
 public class LoginView extends AbstractView {
 
     LoginController loginController;
-
+    
+    /**
+     * Implements the method show with the Login information.
+     */
     @Override
     public void show() {
-
-
         Socket socket = loginController.getSocket();
         Prompt prompt = null;
         try {
@@ -32,6 +38,9 @@ public class LoginView extends AbstractView {
         loginController.setPlayer(playerName);
     }
 
+    /**
+     * Sets the controller for the class.
+     */
     public void setLoginController(LoginController loginController){
         this.loginController = loginController;
     }

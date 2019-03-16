@@ -1,9 +1,13 @@
 package org.academiadecodigo.mainiacs.controllers;
 
-
 import org.academiadecodigo.mainiacs.views.QuestionView;
 
 import java.net.Socket;
+
+/**
+ * Controller of the questions part of the application
+ * Controls the players.
+ */
 
 public class QuestionController extends AbstractController {
     private ScoreController scoreController;
@@ -11,7 +15,11 @@ public class QuestionController extends AbstractController {
     private QuestionView questionView = new QuestionView();
     static int playersWaiting = 0;
     private int questionNumber = 0;
-
+    
+    /**
+     * Sets the loop for the questions.
+     * Ensures the questions are all sent at the same time.
+     */
     @Override
     public void init() {
             synchronized (game) { 
@@ -26,7 +34,6 @@ public class QuestionController extends AbstractController {
                         e.printStackTrace();
                     }
                 }
-
             }
             playersWaiting = 0;
             questionView.show();
@@ -41,27 +48,50 @@ public class QuestionController extends AbstractController {
         scoreController.setSocket(socket);
         scoreController.init();
     }
-
+    
+    /**
+     * Sets the controller
+     * @param scoreController
+     */
     public void setScoreController(ScoreController scoreController) {
         this.scoreController = scoreController;
     }
-
-    public void getQuestion() {
-        game.getQuestion;
+    
+    /**
+     * Gets String question from the game.
+     */
+    public String getQuestion() {
+        return game.getQuestion();
     }
-
+    
+    /**
+     * Gets the array of Strings that are the options.
+     * @return
+     */
     public String[] getOptions() {
         return game.getOptions();
     }
-
-    public void setAnwser(int answer) {
-        game.checkAnwser(answer);
+    
+    /**
+     * Checks if the answer was correct or not.
+     * @param answer
+     */
+    public void setAnswer(int answer) {
+        game.checkAnswer(answer);
     }
-
+    
+    /**
+     * Sets the correct socket.
+     * @param socket
+     */
     public void setSocket(Socket socket) {
         this.socket = socket;
     }
-
+    
+    /**
+     * gets the correct socket.
+     * @return
+     */
     public Socket getSocket() {
         return socket;
     }

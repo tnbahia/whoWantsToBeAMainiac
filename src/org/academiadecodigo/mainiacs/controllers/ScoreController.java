@@ -5,18 +5,30 @@ import org.academiadecodigo.mainiacs.views.ScoreView;
 
 import java.net.Socket;
 
+/**
+ * Controller of the score part of the application
+ * Controls the information about the gaming score and restarting the game.
+ */
 
 public class ScoreController extends AbstractController {
 
     private ScoreView scoreView = new ScoreView();
     private Socket socket;
     private LoginController loginController;
-
+    
+    /**
+     * Send the final scores to be shown.
+     * Deals with whether to restart the game or not.
+     */
     @Override
     public void init() {
         scoreView.show();
     }
-
+    
+    /**
+     * Deals with whether to restart the game or end the application.
+     * @param answer
+     */
     public void setRestart(int answer){
         if(answer == 1){
             loginController = new LoginController();
@@ -25,18 +37,30 @@ public class ScoreController extends AbstractController {
             loginController.init();
         } else {
             System.out.println("Game Over");
+            System.exit(0);
         }
     }
-
-    public String getRack(){
+    
+    /**
+     * Get the player rank in the game.
+     * @return
+     */
+    public String getRank(){
         return game.rank();
     }
-
+    
+    /**
+     * Sets the socket for the game.
+     * @param socket
+     */
     public void setSocket(Socket socket) {
-
         this.socket = socket;
     }
-
+    
+    /**
+     * Sets the socket to be passed to another class.
+     * @return
+     */
     public Socket getSocket() {
         return socket;
     }
