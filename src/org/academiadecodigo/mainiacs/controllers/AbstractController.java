@@ -8,8 +8,8 @@ import org.academiadecodigo.mainiacs.views.View;
  */
 
 public abstract class AbstractController implements Controller {
-    protected View view;
-    protected Game game;
+    View view;
+    Game game;
 
     public void setGame(Game game) {
         this.game = game;

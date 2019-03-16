@@ -35,9 +35,8 @@ public class LoginController extends AbstractController{
      * Sets the player in question. Takes a String as an argument that will be stored as the player name.
      * @param name
      */
-    public void setPlayer(String name){
-        game.addPlayer(name);
-        System.out.println("chegou aqui");
+    public boolean addPlayer(String name){
+        return game.addPlayer(name);
     }
     
     /**
@@ -45,7 +44,6 @@ public class LoginController extends AbstractController{
      * @param socket
      */
     public void setSocket(Socket socket){
-
         this.socket = socket;
     }
     

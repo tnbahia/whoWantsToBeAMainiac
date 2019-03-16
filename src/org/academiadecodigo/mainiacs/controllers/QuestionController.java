@@ -1,7 +1,5 @@
 package org.academiadecodigo.mainiacs.controllers;
 
-
-import org.academiadecodigo.mainiacs.domains.Game;
 import org.academiadecodigo.mainiacs.views.QuestionView;
 
 import java.net.Socket;
@@ -15,9 +13,8 @@ public class QuestionController extends AbstractController {
     private ScoreController scoreController;
     private Socket socket;
     private QuestionView questionView = new QuestionView();
-    static int playersWaiting = 0;
+    static volatile int playersWaiting = 0;
     private int questionNumber = 0;
-    private Game game;
     
     /**
      * Sets the loop for the questions.
@@ -25,7 +22,7 @@ public class QuestionController extends AbstractController {
      */
 
     @Override
-    public /*synchronized*/ void init() {
+    public void init() {
             synchronized (game) {
                 while (playersWaiting < 4) {
                      try {
@@ -34,13 +31,13 @@ public class QuestionController extends AbstractController {
                             System.out.println("Chegou aqui tambem");
                             wait();
                         }
-                        notifyAll();
                     } catch (InterruptedException e) {
-                        e.printStackTrace();
-                    }
+                         e.printStackTrace();
+                     }
                 }
+                playersWaiting--;
+                notifyAll();
             }
-            playersWaiting = 0;
             questionView.setQuestionController(this);
             questionView.show();
             loop();
@@ -102,9 +99,5 @@ public class QuestionController extends AbstractController {
      */
     public Socket getSocket() {
         return socket;
-    }
-
-    public void setGame(Game game){
-        this.game = game;
     }
 }

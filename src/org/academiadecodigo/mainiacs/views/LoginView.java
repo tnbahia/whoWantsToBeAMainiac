@@ -4,8 +4,10 @@ import org.academiadecodigo.bootcamp.Prompt;
 import org.academiadecodigo.bootcamp.scanners.string.StringInputScanner;
 import org.academiadecodigo.mainiacs.controllers.LoginController;
 
+import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.PrintStream;
+import java.io.PrintWriter;
 import java.net.Socket;
 
 /**
@@ -26,16 +28,21 @@ public class LoginView extends AbstractView {
         Prompt prompt = null;
         try {
             //prompt = new Prompt(System.in, System.out);
-            prompt = new Prompt(socket.getInputStream(), new PrintStream(socket.getOutputStream()));
+            prompt = new Prompt(socket.getInputStream(),new PrintStream(socket.getOutputStream()));
         } catch (IOException e) {
             e.printStackTrace();
         }
         StringInputScanner scanner = new StringInputScanner();
         scanner.setMessage("Input User: ");
         //scanner.setMessage(Messages.LOGIN_PLAYER);
-        //scanner.setError(Messages.ERROR_INVALID_PLAYER);
+        System.out.println("espera resposta");
         String playerName = prompt.getUserInput(scanner);
-        loginController.setPlayer(playerName);
+        while (!loginController.addPlayer(playerName)) {
+            //scanner.setMessage(Messages.ERROR_INVALID_PLAYER);
+            playerName = prompt.getUserInput(scanner);
+            System.out.println("aisodiuadosiu");
+        }
+        System.out.println(playerName);
     }
 
     /**

@@ -13,6 +13,7 @@ public class ClientTester {
             PrintWriter out = new PrintWriter(new OutputStreamWriter(socket.getOutputStream()),true);
 
             while(true) {
+                System.out.println("aosid");
                 System.out.println(in.readLine());
             }
         } catch (IOException e) {
