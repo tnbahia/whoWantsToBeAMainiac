@@ -15,14 +15,14 @@ public class QuestionController extends AbstractController {
     //private Game game;
 
     @Override
-    public void init() {
+    public /*synchronized*/ void init() {
             synchronized (game) {
                 while (playersWaiting < 4) {
                      try {
-                        playersWaiting++;
+                         playersWaiting++;
                         if (playersWaiting != 4) {
                             System.out.println("Chegou aqui tambem");
-                            this.wait();
+                            wait();
                         }
                         notifyAll();
                     } catch (InterruptedException e) {
@@ -43,6 +43,7 @@ public class QuestionController extends AbstractController {
             init();
         }
         scoreController.setSocket(socket);
+        scoreController.setGame(game);
         scoreController.init();
     }
 

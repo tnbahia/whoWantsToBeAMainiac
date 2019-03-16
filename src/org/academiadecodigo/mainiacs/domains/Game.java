@@ -7,7 +7,7 @@ public class Game {
     private HashMap<String,Player> players;
     private LinkedList<Integer> questionsAsked;
 
-    public String[] getOptions(){
+    public  String[] getOptions(){
         String[] options = Questions.values()[0].getOptions();
         return options;
     }
