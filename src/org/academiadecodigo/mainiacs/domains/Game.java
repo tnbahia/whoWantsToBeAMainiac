@@ -3,11 +3,13 @@ package org.academiadecodigo.mainiacs.domains;
 import java.net.Socket;
 import java.util.*;
 
-public class Game {
+public enum Game {
+    GAME;
+
     private HashMap<Socket, Player> players;
     private int[] questionsToAsk;
 
-    public Game() {
+    Game() {
         players = new HashMap<>();
         questionsToAsk = new int[10];
         for (int i = 0; i < questionsToAsk.length; i++) {
@@ -48,6 +50,7 @@ public class Game {
     private boolean nameAlreadyExists(String name) {
         for (Player player: players.values()) {
             if (player.getName().equals(name)) {
+                System.out.println("nome já existe");
                 return false;
             }
         }
