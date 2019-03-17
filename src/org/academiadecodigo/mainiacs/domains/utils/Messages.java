@@ -17,6 +17,14 @@ public class Messages {
             "YP  YP  YP YP   YP VP   V8P Y888888P YP   YP  `Y88P' \n\n" +
             "*****************************************************\n";
 
+    public static final String OVER = " \n" +
+            " d888b   .d8b.  .88b  d88. d88888b    .d88b.  db    db d88888b d8888b. \n" +
+            "88' Y8b d8' `8b 88'YbdP`88 88'       .8P  Y8. 88    88 88'     88  `8D \n" +
+            "88      88ooo88 88  88  88 88ooooo   88    88 Y8    8P 88ooooo 88oobY' \n" +
+            "88  ooo 88~~~88 88  88  88 88~~~~~   88    88 `8b  d8' 88~~~~~ 88`8b   \n" +
+            "88. ~8~ 88   88 88  88  88 88.       `8b  d8'  `8bd8'  88.     88 `88. \n" +
+            " Y888P  YP   YP YP  YP  YP Y88888P    `Y88P'     YP    Y88888P 88   YD";
+
     public static final String WELCOME = "Welcome to Who Wants To Be A #MAINiac! \n " +
             "A game about Java, the MAINiacs and the wonderful world of programming.";
     public static final String LOGIN_PLAYER = "What do you want us to call you? ";
