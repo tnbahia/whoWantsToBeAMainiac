@@ -7,7 +7,8 @@ package org.academiadecodigo.mainiacs.domains.utils;
 
 public class Messages {
     
-    public static final String WELCOME = "Welcome to Who Wants To Be A #MAINiac! \n A game about Java, the MAINiacs and the wonderful world of programming.";
+    public static final String WELCOME = "Welcome to Who Wants To Be A #MAINiac! \n " +
+            "A game about Java, the MAINiacs and the wonderful world of programming.";
     public static final String LOGIN_PLAYER = "What do you want us to call you? ";
     public static final String OCCUPIED_NAME = "Name already in use, choose wisely, be unique!";
     public static final String GAME_RESTART = "Will you do better in the next game? Let's play again.";
