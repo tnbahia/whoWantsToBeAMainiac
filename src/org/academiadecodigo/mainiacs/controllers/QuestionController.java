@@ -97,8 +97,8 @@ public class QuestionController extends AbstractController {
      *
      * @param answer
      */
-    public void setAnswer(int answer) {
-        game.setAnswer(socket, round, answer);
+    public boolean setAnswer(int answer) {
+        return game.setAnswer(socket, round, answer);
     }
 
     /**
