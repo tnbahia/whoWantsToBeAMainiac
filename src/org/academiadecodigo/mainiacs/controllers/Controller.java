@@ -5,5 +5,9 @@ package org.academiadecodigo.mainiacs.controllers;
  */
 
 public interface Controller {
+    
+    /**
+     * Method to initialize the controller.
+     */
     void init();
 }
