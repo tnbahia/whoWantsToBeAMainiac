@@ -7,6 +7,7 @@ package org.academiadecodigo.mainiacs.domains.utils;
 
 public class Messages {
 
+
     public static final String LOGO = "\n" + "WHO WANTS TO BE A \n" +
             ".88b  d88.  .d8b.  d8b   db d888888b  .d8b.   .o88b. \n" +
             "88'YbdP`88 d8' `8b 888o  88   `88'   d8' `8b d8P  Y8 \n" +
@@ -15,6 +16,7 @@ public class Messages {
             "88  88  88 88   88 88  V888   .88.   88   88 Y8b  d8 \n" +
             "YP  YP  YP YP   YP VP   V8P Y888888P YP   YP  `Y88P' \n\n" +
             "*****************************************************\n";
+
     public static final String WELCOME = "Welcome to Who Wants To Be A #MAINiac! \n " +
             "A game about Java, the MAINiacs and the wonderful world of programming.";
     public static final String LOGIN_PLAYER = "What do you want us to call you? ";
@@ -24,6 +26,7 @@ public class Messages {
     public static final String NO = "No";
     public static final String RIGHT = "You know your stuff!";
     public static final String WRONG = "Maybe try again!";
+    public static final String WAINTING = "Wainting for other players...";
     
     private Messages(){}
 
