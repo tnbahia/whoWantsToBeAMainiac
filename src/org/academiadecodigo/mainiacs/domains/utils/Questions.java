@@ -89,7 +89,7 @@ public enum Questions {
                     "Bahia",
                     "Tiago",
                     "Sara"},
-            1),
+            2),
     QUESTION_13("Who refuses to get up on a chair?",
             new String[]{
                     "Ricardo",

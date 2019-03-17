@@ -8,8 +8,8 @@ import java.util.*;
 public enum Game {
     GAME;
 
-    public static final int NUM_OF_PLAYERS = 2;
-    public static final int NUM_OF_ROUNDS = 2;
+    public static final int NUM_OF_PLAYERS = 4;
+    public static final int NUM_OF_ROUNDS = 5;
     private HashMap<Socket, Player> players;
     private int[] questionsToAsk;
 

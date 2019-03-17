@@ -33,7 +33,9 @@ public class ScoreView extends AbstractView {
         String[] options = {Messages.YES, Messages.NO};
         MenuInputScanner menuInputScanner = new MenuInputScanner(options);
 
-        menuInputScanner.setMessage(Messages.OVER + "\n\n" + scoreController.getRank() + "\n\n" + Messages.GAME_RESTART);
+        menuInputScanner.setMessage(Messages.OVER + "\n\n" + Messages.SCORE_BAR + "\n" +
+                                    scoreController.getRank() + "\n" +
+                                    Messages.SCORE_BAR + "\n\n" + Messages.GAME_RESTART);
 
         int answer = prompt.getUserInput(menuInputScanner);
         scoreController.setRestart(answer);

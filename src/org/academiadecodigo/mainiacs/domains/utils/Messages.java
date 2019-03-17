@@ -23,7 +23,9 @@ public class Messages {
             "88      88ooo88 88  88  88 88ooooo   88    88 Y8    8P 88ooooo 88oobY' \n" +
             "88  ooo 88~~~88 88  88  88 88~~~~~   88    88 `8b  d8' 88~~~~~ 88`8b   \n" +
             "88. ~8~ 88   88 88  88  88 88.       `8b  d8'  `8bd8'  88.     88 `88. \n" +
-            " Y888P  YP   YP YP  YP  YP Y88888P    `Y88P'     YP    Y88888P 88   YD";
+            " Y888P  YP   YP YP  YP  YP Y88888P    `Y88P'     YP    Y88888P 88   YD   ";
+
+    public static final String SCORE_BAR = "**********************************************************************";
 
     public static final String WELCOME = "Welcome to Who Wants To Be A #MAINiac! \n " +
             "A game about Java, the MAINiacs and the wonderful world of programming.";
@@ -34,7 +36,7 @@ public class Messages {
     public static final String NO = "No";
     public static final String RIGHT = "You know your stuff!";
     public static final String WRONG = "Maybe try again!";
-    public static final String WAINTING = "Wainting for other players...";
+    public static final String WAINTING = "Waiting for other players...";
     
     private Messages(){}
 
