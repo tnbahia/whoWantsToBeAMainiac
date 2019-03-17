@@ -3,11 +3,10 @@ package org.academiadecodigo.mainiacs.views;
 import org.academiadecodigo.bootcamp.Prompt;
 import org.academiadecodigo.bootcamp.scanners.menu.MenuInputScanner;
 import org.academiadecodigo.mainiacs.controllers.ScoreController;
-import org.academiadecodigo.mainiacs.utils.Messages;
+import org.academiadecodigo.mainiacs.domains.utils.Messages;
 
 import java.io.IOException;
 import java.io.PrintStream;
-import java.io.PrintWriter;
 import java.net.Socket;
 
 /**

@@ -1,4 +1,4 @@
-package org.academiadecodigo.mainiacs.domains;
+package org.academiadecodigo.mainiacs.domains.utils;
 
 /**
  * List of all questions and respective answers and methods.

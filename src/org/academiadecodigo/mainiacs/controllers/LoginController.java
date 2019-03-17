@@ -14,12 +14,10 @@ public class LoginController extends AbstractController{
     private QuestionController questionController;
     private LoginView loginView;
     private Socket socket;
-    //private Game game;
     
     /**
      * Method to initialize the controller itself.
      */
-
     @Override
     public void init() {
         loginView = new LoginView();

@@ -3,12 +3,10 @@ package org.academiadecodigo.mainiacs.views;
 import org.academiadecodigo.bootcamp.Prompt;
 import org.academiadecodigo.bootcamp.scanners.string.StringInputScanner;
 import org.academiadecodigo.mainiacs.controllers.LoginController;
-import org.academiadecodigo.mainiacs.utils.Messages;
+import org.academiadecodigo.mainiacs.domains.utils.Messages;
 
-import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.PrintStream;
-import java.io.PrintWriter;
 import java.net.Socket;
 
 /**

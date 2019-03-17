@@ -1,5 +1,7 @@
 package org.academiadecodigo.mainiacs.domains;
 
+import org.academiadecodigo.mainiacs.domains.utils.Questions;
+
 import java.net.Socket;
 import java.util.*;
 
