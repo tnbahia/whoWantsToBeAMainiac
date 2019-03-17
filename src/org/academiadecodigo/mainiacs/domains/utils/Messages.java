@@ -35,8 +35,8 @@ public class Messages {
     public static final String GAME_RESTART = "Will you do better in the next game? Let's play again.";
     public static final String YES = "Yes";
     public static final String NO = "No";
-    public static final String RIGHT = "You know your stuff!";
-    public static final String WRONG = "Maybe try again!";
+    public static final String RIGHT = "✅ You know your stuff!";
+    public static final String WRONG = "❌ Maybe try again!";
     public static final String WAITING = "⏳ Waiting for other players...";
     
     private Messages(){}
