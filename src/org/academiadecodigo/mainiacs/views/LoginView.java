@@ -32,8 +32,7 @@ public class LoginView extends AbstractView {
             e.printStackTrace();
         }
         StringInputScanner scanner = new StringInputScanner();
-        scanner.setMessage(Messages.LOGIN_PLAYER);
-        //scanner.setError(Messages.OCCUPIED_NAME);
+        scanner.setMessage(Messages.LOGO + Messages.LOGIN_PLAYER);
         String playerName = prompt.getUserInput(scanner);
         System.out.println("respondeu");
         while (!loginController.addPlayer(playerName)) {
