@@ -16,12 +16,12 @@ import java.net.Socket;
  */
 
 public class QuestionView implements View {
+    
     private QuestionController questionController;
 
     /**
      * Implements the method show with the Questions.
      */
-
     @Override
     public void show() {
         Socket socket = questionController.getSocket();
@@ -32,31 +32,33 @@ public class QuestionView implements View {
             e.printStackTrace();
         }
 
-        int answer = prompt.getUserInput(buildScanner());
+        int answer = prompt.getUserInput(createScanner());
         checkAnswer(socket, answer);
     }
-
-    private MenuInputScanner buildScanner() {
+    
+    /**
+     * Creates the screen.
+     * @return
+     */
+    private MenuInputScanner createScanner() {
         MenuInputScanner menuInputScanner = new MenuInputScanner(questionController.getOptions());
         menuInputScanner.setMessage(questionController.getQuestion());
         return menuInputScanner;
     }
 
     /**
-     *Setting up the Question Controller.
+     *Sets up the Question Controller.
      * @param questionController
      */
-
     public void setQuestionController(QuestionController questionController){
         this.questionController = questionController;
     }
 
     /**
-     * Will check if the answer give by the player is correct.
+     * Checks if the answer given by the player is correct and tells the player.
      * @param socket
      * @param answer
      */
-
     private void checkAnswer(Socket socket, int answer){
         PrintWriter outToClient = null;
         try {
