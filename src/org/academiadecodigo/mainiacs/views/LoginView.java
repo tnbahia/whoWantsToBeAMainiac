@@ -5,10 +5,8 @@ import org.academiadecodigo.bootcamp.scanners.string.StringInputScanner;
 import org.academiadecodigo.mainiacs.controllers.LoginController;
 import org.academiadecodigo.mainiacs.utils.Messages;
 
-import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.PrintStream;
-import java.io.PrintWriter;
 import java.net.Socket;
 
 /**
@@ -16,9 +14,8 @@ import java.net.Socket;
  * Deals with setting up connection and accept the login itself.
  */
 
-public class LoginView extends AbstractView {
-
-    LoginController loginController;
+public class LoginView implements View {
+    private LoginController loginController;
     
     /**
      * Implements the method show with the Login information.
@@ -28,22 +25,18 @@ public class LoginView extends AbstractView {
         Socket socket = loginController.getSocket();
         Prompt prompt = null;
         try {
-            //prompt = new Prompt(System.in, System.out);
             prompt = new Prompt(socket.getInputStream(),new PrintStream(socket.getOutputStream()));
         } catch (IOException e) {
             e.printStackTrace();
         }
         StringInputScanner scanner = new StringInputScanner();
         scanner.setMessage(Messages.LOGIN_PLAYER);
-        //scanner.setError(Messages.OCCUPIED_NAME);
         String playerName = prompt.getUserInput(scanner);
-        System.out.println("respondeu");
+
         while (!loginController.addPlayer(playerName)) {
-            //scanner.setMessage(Messages.ERROR_INVALID_PLAYER);
+            scanner.setMessage(Messages.OCCUPIED_NAME);
             playerName = prompt.getUserInput(scanner);
-            System.out.println("aisodiuadosiu");
         }
-        System.out.println(playerName);
     }
 
     /**

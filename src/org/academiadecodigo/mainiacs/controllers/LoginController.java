@@ -11,10 +11,7 @@ import java.net.Socket;
  */
 
 public class LoginController extends AbstractController{
-    private QuestionController questionController;
-    private LoginView loginView;
     private Socket socket;
-    //private Game game;
     
     /**
      * Method to initialize the controller itself.
@@ -22,10 +19,10 @@ public class LoginController extends AbstractController{
 
     @Override
     public void init() {
-        loginView = new LoginView();
+        LoginView loginView = new LoginView();
         loginView.setLoginController(this);
         loginView.show();
-        questionController = new QuestionController();
+        QuestionController questionController = new QuestionController();
         questionController.setSocket(socket);
         questionController.setGame(game);
         questionController.init();
@@ -54,10 +51,6 @@ public class LoginController extends AbstractController{
      */
     public Socket getSocket() {
         return socket;
-    }
-
-    public LoginController getLoginController(){
-        return this;
     }
 
     public void setGame(Game game){

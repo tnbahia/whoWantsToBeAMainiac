@@ -15,7 +15,7 @@ import java.net.Socket;
  * Deals with showing the final score to the player.
  */
 
-public class ScoreView extends AbstractView {
+public class ScoreView implements View {
     private ScoreController scoreController;
     
     /**

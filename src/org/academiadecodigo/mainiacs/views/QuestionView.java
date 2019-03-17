@@ -13,13 +13,13 @@ import java.net.Socket;
  * Deals with showing the questions to the player.
  */
 
-public class QuestionView extends AbstractView {
+public class QuestionView implements View {
     
     /**
      * Implements the method show with the Questions.
      */
 
-    QuestionController questionController;
+    private QuestionController questionController;
 
 
     @Override

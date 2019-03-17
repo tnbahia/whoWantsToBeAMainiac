@@ -11,8 +11,6 @@ import java.net.Socket;
  */
 
 public class ScoreController extends AbstractController {
-
-    private ScoreView scoreView = new ScoreView();
     private Socket socket;
     
     /**
@@ -21,6 +19,7 @@ public class ScoreController extends AbstractController {
      */
     @Override
     public void init() {
+        ScoreView scoreView = new ScoreView();
         scoreView.setScoreController(this);
         scoreView.show();
     }
