@@ -9,7 +9,7 @@ import java.util.*;
 public enum Game {
     GAME;
 
-    public static final int NUM_OF_PLAYERS = 1;
+    public static final int NUM_OF_PLAYERS = 4;
     public static final int NUM_OF_ROUNDS = 10;
 
     private final HashMap<Socket, Player> players;
