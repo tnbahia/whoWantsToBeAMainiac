@@ -7,26 +7,34 @@ public enum Game {
     GAME;
 
     public static final int NUM_OF_PLAYERS = 2;
-    public static final int NUM_OF_ROUNDS = 2;
+    public static final int NUM_OF_ROUNDS = 20;
     private HashMap<Socket, Player> players;
-    private int[] questionsToAsk;
+    public int[] questionsToAsk;
 
     Game() {
         players = new HashMap<>();
+        setQuestionsToAsk();
+    }
+
+    private void setQuestionsToAsk () {
         questionsToAsk = new int[NUM_OF_ROUNDS];
+        HashSet<Integer> questionNumbers = new HashSet<>();
         for (int i = 0; i < questionsToAsk.length; i++) {
             int num = (int) (Math.random() * Questions.values().length);
+            while (!questionNumbers.add(num)) {
+                num = (int) (Math.random() * Questions.values().length);
+            }
             questionsToAsk[i] = num;
         }
     }
 
     public String getQuestion(int round) {
-        int questionNumber = questionsToAsk[round-1];
+        int questionNumber = questionsToAsk[round - 1];
         return Questions.values()[questionNumber].getQuestion();
     }
 
     public String[] getOptions(int round) {
-        int questionNumber = questionsToAsk[round-1];
+        int questionNumber = questionsToAsk[round - 1];
         return Questions.values()[questionNumber].getOptions();
     }
 
@@ -37,7 +45,7 @@ public enum Game {
     }
 
     private boolean checkAnswer(int round, int answer) {
-        int question = questionsToAsk[round-1];
+        int question = questionsToAsk[round - 1];
         return Questions.values()[question].getRightAnswer() == answer;
     }
 
@@ -50,7 +58,7 @@ public enum Game {
     }
 
     private boolean nameAlreadyExists(String name) {
-        for (Player player: players.values()) {
+        for (Player player : players.values()) {
             if (player.getName().equals(name)) {
                 System.out.println("nome já existe");
                 return true;
@@ -62,7 +70,7 @@ public enum Game {
     public String rank() {
         HashMap<String, Integer> results = new HashMap<>();
         for (Player player : players.values()) {
-            results.put(player.getName(),player.getScore());
+            results.put(player.getName(), player.getScore());
         }
         //return "result";
 

@@ -18,7 +18,6 @@ public class GameServer {
     public static void main(String[] args) {
         try {
             ServerSocket serverSocket = new ServerSocket(DEFAULT_PORT);
-
             int playersLoggedIn = 0;
             while (playersLoggedIn < Game.NUM_OF_PLAYERS) {
                 Socket newPlayer = serverSocket.accept();
@@ -28,13 +27,11 @@ public class GameServer {
                         LoginController loginController = new LoginController();
                         loginController.setSocket(newPlayer);
                         loginController.setGame(Game.GAME);
-                        System.out.println("entrou um");
                         loginController.init();
                     }
                 }).start();
                 playersLoggedIn++;
             }
-            System.out.println(Thread.currentThread().getName());
         } catch (IOException e) {
             e.printStackTrace();
         }
