@@ -73,7 +73,7 @@ public class QuestionController extends AbstractController {
         } catch (IOException e) {
             e.printStackTrace();
         }
-        outToClient.println(Messages.WAINTING);
+        outToClient.println(Messages.WAITING);
     }
     
     /**
