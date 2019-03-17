@@ -13,8 +13,8 @@ import java.net.Socket;
  * View of the Score part.
  * Deals with showing the final score to the player.
  */
-
 public class ScoreView implements View {
+    
     private ScoreController scoreController;
     
     /**
@@ -29,11 +29,15 @@ public class ScoreView implements View {
         } catch (IOException e) {
             e.printStackTrace();
         }
-        int answer = prompt.getUserInput(buildScanner());
+        int answer = prompt.getUserInput(createScanner());
         scoreController.setRestart(answer);
     }
-
-    private MenuInputScanner buildScanner() {
+    
+    /**
+     * Sets the ranking screen.
+     * @return
+     */
+    private MenuInputScanner createScanner() {
         String[] options = {Messages.YES, Messages.NO};
         MenuInputScanner menuInputScanner = new MenuInputScanner(options);
 
@@ -43,10 +47,14 @@ public class ScoreView implements View {
                 scoreController.getRank() + "\n" +
                 Messages.SCORE_BAR + "\n\n" +
                 Messages.GAME_RESTART);
-
+        
         return menuInputScanner;
     }
-
+    
+    /**
+     * Sets the controller for the view.
+     * @param scoreController
+     */
     public void setScoreController(ScoreController scoreController) {
         this.scoreController = scoreController;
     }
