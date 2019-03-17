@@ -1,8 +1,11 @@
 package org.academiadecodigo.mainiacs.controllers;
 
 import org.academiadecodigo.mainiacs.domains.Game;
+import org.academiadecodigo.mainiacs.domains.utils.Messages;
 import org.academiadecodigo.mainiacs.views.QuestionView;
 
+import java.io.IOException;
+import java.io.PrintWriter;
 import java.net.Socket;
 
 /**
@@ -29,20 +32,18 @@ public class QuestionController extends AbstractController {
             playersWaiting++;
             while (playersWaiting != Game.NUM_OF_PLAYERS) {
                 try {
+                    waitingMessage();
                     Game.GAME.wait();
                 } catch (InterruptedException e) {
                     e.printStackTrace();
                 }
             }
-            System.out.println("----" + Thread.currentThread().getName());
             Game.GAME.notifyAll();
         }
-        System.out.println(Thread.currentThread().getName() + " - " + Thread.activeCount());
         synchronized (Game.GAME) {
             playersAwake++;
         }
         if (playersAwake == Game.NUM_OF_PLAYERS) {
-            System.out.println("no players waiting");
             playersWaiting = 0;
             playersAwake = 0;
         }
@@ -66,6 +67,16 @@ public class QuestionController extends AbstractController {
         init();
     }
 
+    private void waitingMessage(){
+        PrintWriter outToClient = null;
+        try {
+            outToClient = new PrintWriter(socket.getOutputStream(), true);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        outToClient.println(Messages.WAINTING);
+    }
+    
     /**
      * Sets the controller
      *
