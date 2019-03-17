@@ -35,8 +35,10 @@ public class Messages {
             "88. ~8~ 88   88 88  88  88 88.       `8b  d8'  `8bd8'  88.     88 `88. \n" +
             " Y888P  YP   YP YP  YP  YP Y88888P    `Y88P'     YP    Y88888P 88   YD   ";
     public static final String SCORE_BAR = "**********************************************************************";
-
-
+    
+    /**
+     * Private constructor to ensure the class remains utilitarian.
+     */
     private Messages(){}
 
 }

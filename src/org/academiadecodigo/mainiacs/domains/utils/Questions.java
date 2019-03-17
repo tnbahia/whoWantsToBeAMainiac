@@ -62,10 +62,10 @@ public enum Questions {
                     "Francisco",
                     "Belle"},
             4),
-    QUESTION_9("Who has been known for getting puke in their eyes?",
+    QUESTION_9("Who worked for Uber Eats before joining the #MAINiacs?",
             new String[]{
+                    "Belle",
                     "Bruno",
-                    "Bahia",
                     "Mila",
                     "Francisco"},
             2),
@@ -361,7 +361,6 @@ public enum Questions {
     private String question;
     private String[] options;
     private int rightAnswer;
-    
     
     /**
      * Constructor for the question itself. Takes three parameters:
