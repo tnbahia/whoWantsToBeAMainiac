@@ -7,6 +7,7 @@ package org.academiadecodigo.mainiacs.domains;
 public class Player {
     private String name;
     private int score;
+    private boolean winner;
     
     /**
      * Player constructor. Takes a string that initializes the variable name.
@@ -38,5 +39,13 @@ public class Player {
      */
     public int getScore() {
         return score;
+    }
+
+    public boolean isWinner() {
+        return winner;
+    }
+
+    public void setWinner(boolean winner) {
+        this.winner = winner;
     }
 }
