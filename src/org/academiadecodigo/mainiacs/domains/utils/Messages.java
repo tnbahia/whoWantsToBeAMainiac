@@ -27,6 +27,7 @@ public class Messages {
 
     public static final String SCORE_BAR = "**********************************************************************";
 
+    public static final String WINNER = "\uD83E\uDD47";
     public static final String WELCOME = "Welcome to Who Wants To Be A #MAINiac! \n " +
             "A game about Java, the MAINiacs and the wonderful world of programming.";
     public static final String LOGIN_PLAYER = "What do you want us to call you? ";
