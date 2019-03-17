@@ -1,5 +1,6 @@
 package org.academiadecodigo.mainiacs.domains;
 
+import org.academiadecodigo.mainiacs.domains.utils.Messages;
 import org.academiadecodigo.mainiacs.domains.utils.Questions;
 
 import java.net.Socket;
@@ -75,7 +76,7 @@ public enum Game {
         getWinner();
         HashMap<String, Integer> results = new HashMap<>();
         for (Player player : players.values()) {
-            String name = player.isWinner() ? "aljd " + player.getName() : player.getName();
+            String name = player.isWinner() ? Messages.WINNER + player.getName() : player.getName();
             results.put(name, player.getScore());
         }
 
