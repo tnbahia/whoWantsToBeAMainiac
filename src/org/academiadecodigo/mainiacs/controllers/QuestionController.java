@@ -35,6 +35,11 @@ public class QuestionController extends AbstractController {
             }
             Game.GAME.notifyAll();
         }
+
+        if (Thread.activeCount() > 4) {
+            playersWaiting = 0;
+        }
+
         questionView.setQuestionController(this);
         questionView.show();
         loop();
