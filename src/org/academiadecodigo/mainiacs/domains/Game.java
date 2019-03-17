@@ -34,7 +34,7 @@ public enum Game {
 
     public String getQuestion(int round) {
         int questionNumber = questionsToAsk[round - 1];
-        return Questions.values()[questionNumber].getQuestion();
+        return "Question " + round + " - " + Questions.values()[questionNumber].getQuestion();
     }
 
     public String[] getOptions(int round) {
