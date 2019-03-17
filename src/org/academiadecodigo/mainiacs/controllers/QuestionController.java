@@ -1,8 +1,11 @@
 package org.academiadecodigo.mainiacs.controllers;
 
 import org.academiadecodigo.mainiacs.domains.Game;
+import org.academiadecodigo.mainiacs.domains.utils.Messages;
 import org.academiadecodigo.mainiacs.views.QuestionView;
 
+import java.io.IOException;
+import java.io.PrintWriter;
 import java.net.Socket;
 
 /**
@@ -28,6 +31,7 @@ public class QuestionController extends AbstractController {
             playersWaiting++;
             while (playersWaiting != Game.NUM_OF_PLAYERS) {
                 try {
+                    waitingMessage();
                     Game.GAME.wait();
                 } catch (InterruptedException e) {
                     e.printStackTrace();
@@ -62,6 +66,16 @@ public class QuestionController extends AbstractController {
         init();
     }
 
+    private void waitingMessage(){
+        PrintWriter outToClient = null;
+        try {
+            outToClient = new PrintWriter(socket.getOutputStream(), true);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        outToClient.println(Messages.WAINTING);
+    }
+    
     /**
      * Gets String question from the game.
      */
@@ -84,8 +98,8 @@ public class QuestionController extends AbstractController {
      *
      * @param answer
      */
-    public void setAnswer(int answer) {
-        game.setAnswer(socket, round, answer);
+    public boolean setAnswer(int answer) {
+        return game.setAnswer(socket, round, answer);
     }
 
     /**

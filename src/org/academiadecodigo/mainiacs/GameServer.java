@@ -19,6 +19,7 @@ public class GameServer {
         try {
             ServerSocket serverSocket = new ServerSocket(DEFAULT_PORT);
             int playersLoggedIn = 0;
+
             while (playersLoggedIn < Game.NUM_OF_PLAYERS) {
                 Socket newPlayer = serverSocket.accept();
                 new Thread(new Runnable() {

@@ -3,11 +3,10 @@ package org.academiadecodigo.mainiacs.views;
 import org.academiadecodigo.bootcamp.Prompt;
 import org.academiadecodigo.bootcamp.scanners.menu.MenuInputScanner;
 import org.academiadecodigo.mainiacs.controllers.ScoreController;
-import org.academiadecodigo.mainiacs.utils.Messages;
+import org.academiadecodigo.mainiacs.domains.utils.Messages;
 
 import java.io.IOException;
 import java.io.PrintStream;
-import java.io.PrintWriter;
 import java.net.Socket;
 
 /**
@@ -34,7 +33,9 @@ public class ScoreView implements View {
         String[] options = {Messages.YES, Messages.NO};
         MenuInputScanner menuInputScanner = new MenuInputScanner(options);
 
-        menuInputScanner.setMessage(scoreController.getRank() + "\n\n" + Messages.GAME_RESTART);
+        menuInputScanner.setMessage(Messages.OVER + "\n\n" + Messages.SCORE_BAR + "\n" +
+                                    scoreController.getRank() + "\n" +
+                                    Messages.SCORE_BAR + "\n\n" + Messages.GAME_RESTART);
 
         int answer = prompt.getUserInput(menuInputScanner);
         scoreController.setRestart(answer);

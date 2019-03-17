@@ -16,7 +16,6 @@ public class LoginController extends AbstractController{
     /**
      * Method to initialize the controller itself.
      */
-
     @Override
     public void init() {
         LoginView loginView = new LoginView();

@@ -1,4 +1,4 @@
-package org.academiadecodigo.mainiacs.domains;
+package org.academiadecodigo.mainiacs.domains.utils;
 
 /**
  * List of all questions and respective answers and methods.
@@ -89,7 +89,7 @@ public enum Questions {
                     "Bahia",
                     "Tiago",
                     "Sara"},
-            1),
+            2),
     QUESTION_13("Who refuses to get up on a chair?",
             new String[]{
                     "Ricardo",

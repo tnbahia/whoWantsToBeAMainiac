@@ -1,5 +1,7 @@
 package org.academiadecodigo.mainiacs.domains;
 
+import org.academiadecodigo.mainiacs.domains.utils.Questions;
+
 import java.net.Socket;
 import java.util.*;
 
@@ -8,6 +10,7 @@ public enum Game {
 
     public static final int NUM_OF_PLAYERS = 4;
     public static final int NUM_OF_ROUNDS = 10;
+
     private HashMap<Socket, Player> players;
     private int[] questionsToAsk;
 
@@ -38,10 +41,12 @@ public enum Game {
         return Questions.values()[questionNumber].getOptions();
     }
 
-    public void setAnswer(Socket socket, int round, int answer) {
+    public boolean setAnswer(Socket socket, int round, int answer) {
         if (checkAnswer(round, answer)) {
             players.get(socket).setScore(1);
+            return true;
         }
+        return false;
     }
 
     private boolean checkAnswer(int round, int answer) {

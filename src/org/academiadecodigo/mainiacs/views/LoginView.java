@@ -3,7 +3,7 @@ package org.academiadecodigo.mainiacs.views;
 import org.academiadecodigo.bootcamp.Prompt;
 import org.academiadecodigo.bootcamp.scanners.string.StringInputScanner;
 import org.academiadecodigo.mainiacs.controllers.LoginController;
-import org.academiadecodigo.mainiacs.utils.Messages;
+import org.academiadecodigo.mainiacs.domains.utils.Messages;
 
 import java.io.IOException;
 import java.io.PrintStream;
@@ -30,7 +30,7 @@ public class LoginView implements View {
             e.printStackTrace();
         }
         StringInputScanner scanner = new StringInputScanner();
-        scanner.setMessage(Messages.LOGIN_PLAYER);
+        scanner.setMessage(Messages.LOGO + Messages.LOGIN_PLAYER);
         String playerName = prompt.getUserInput(scanner);
 
         while (!loginController.addPlayer(playerName)) {
