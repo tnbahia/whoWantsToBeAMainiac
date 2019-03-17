@@ -104,7 +104,7 @@ public enum Questions {
                     "Transistor",
                     "Chip"},
             4),
-    QUESTION_15("What the name given to a set of electronic circuits on one small flat piece of silicon?",
+    QUESTION_15("What's the name given to a set of electronic circuits on one small flat piece of silicon?",
             new String[]{
                     "Integrated Circuit",
                     "RAM memory",
@@ -125,14 +125,14 @@ public enum Questions {
                     "MAYBE",
                     "NOT"},
             3),
-    QUESTION_18("What is the most common architecture used on modern computers?",
+    QUESTION_18("What's the most common architecture used on modern computers?",
             new String[]{
                     "Turing",
                     "Boolean",
                     "Gates",
                     "Von Neumann"},
             4),
-    QUESTION_19("What is NOT part of the basic computer architecture?",
+    QUESTION_19("What's NOT part of the basic computer architecture?",
             new String[]{
                     "USB",
                     "CPU",
@@ -195,14 +195,14 @@ public enum Questions {
                     "Jython",
                     "Groovy"},
             1),
-    QUESTION_28("What is an algorythm?",
+    QUESTION_28("What is an algorithm?",
             new String[]{
                     "It's a group of processes.",
                     "It's a set of steps to accomplish a task.",
                     "It's the number of any given classes needed to run a program.",
                     "It's a complex way to protect information."},
             2),
-    QUESTION_29("What's the keyword to use to leave a Switch?",
+    QUESTION_29("What's the keyword to use to leave a switch?",
             new String[]{
                     "interrupt;",
                     "continue;",
@@ -315,7 +315,7 @@ public enum Questions {
                     "LAN",
                     "MAN"},
             2),
-    QUESTION_45("Tim Berner Lee invented the three fundamental technologies of the WWW. Which one does not belong?",
+    QUESTION_45("Tim Berners-Lee invented the three fundamental technologies of the WWW. Which one does not belong?",
             new String[]{
                     "HTTP",
                     "URI",
@@ -338,10 +338,10 @@ public enum Questions {
             1),
     QUESTION_48("What are the three types of Thread Pools we know?",
             new String[]{
-                    "Single Thread, Multithread",
-                    "Fixed Thread Pool, Cached Thread Pool",
-                    "Concurrent Threads, Multithreads",
-                    "Single Thread, Multiple Threads"},
+                    "Single Thread, Multithreaded, Cache Threaded",
+                    "Fixed Thread Pool, Cached Thread Pool, Scheduled Thread Pool",
+                    "Concurrent Threads, Multithreads, Two Threads",
+                    "Single Thread, Multiple Threads, Fixed Size Threads"},
             2),
     QUESTION_49("How can you create a thread?",
             new String[]{
