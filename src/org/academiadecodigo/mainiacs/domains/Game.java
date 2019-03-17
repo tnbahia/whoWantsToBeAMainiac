@@ -1,13 +1,15 @@
 package org.academiadecodigo.mainiacs.domains;
 
+import org.academiadecodigo.mainiacs.utils.Messages;
+
 import java.net.Socket;
 import java.util.*;
 
 public enum Game {
     GAME;
 
-    public static final int NUM_OF_PLAYERS = 4;
-    public static final int NUM_OF_ROUNDS = 10;
+    public static final int NUM_OF_PLAYERS = 2;
+    public static final int NUM_OF_ROUNDS = 2;
     private HashMap<Socket, Player> players;
     private int[] questionsToAsk;
 
@@ -16,7 +18,7 @@ public enum Game {
         setQuestionsToAsk();
     }
 
-    private void setQuestionsToAsk () {
+    private void setQuestionsToAsk() {
         questionsToAsk = new int[NUM_OF_ROUNDS];
         HashSet<Integer> questionNumbers = new HashSet<>();
         for (int i = 0; i < questionsToAsk.length; i++) {
@@ -67,9 +69,11 @@ public enum Game {
     }
 
     public String rank() {
+        getWinner();
         HashMap<String, Integer> results = new HashMap<>();
         for (Player player : players.values()) {
-            results.put(player.getName(), player.getScore());
+            String name = player.isWinner() ? "aljd " + player.getName() : player.getName();
+            results.put(name, player.getScore());
         }
 
         StringBuilder s = new StringBuilder();
@@ -80,5 +84,19 @@ public enum Game {
             s.append("\n");
         }
         return s.toString();
+    }
+
+    private void getWinner() {
+        int maxPoints = 0;
+        for (Player player : players.values()) {
+            if (player.getScore() > maxPoints) {
+                maxPoints = player.getScore();
+            }
+        }
+        for (Player player : players.values()) {
+            if (player.getScore() == maxPoints) {
+                player.setWinner(true);
+            }
+        }
     }
 }
