@@ -39,10 +39,21 @@ public class QuestionView implements View {
         checkAnswer(socket, answer);
     }
 
+    /**
+     *Setting up the Question Controller.
+     * @param questionController
+     */
+
     public void setQuestionController(QuestionController questionController){
         this.questionController = questionController;
     }
-    
+
+    /**
+     * Will check if the answer give by the player is correct.
+     * @param socket
+     * @param answer
+     */
+
     private void checkAnswer(Socket socket, int answer){
         PrintWriter outToClient = null;
         try {

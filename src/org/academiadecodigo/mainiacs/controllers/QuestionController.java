@@ -49,11 +49,18 @@ public class QuestionController extends AbstractController {
         loop();
     }
 
+    /**
+     * Show a new question to the user.
+     */
     private void newQuestion() {
         questionView.setQuestionController(this);
         questionView.show();
     }
 
+    /**
+     * Will give a new question to the user.
+     * This will stop when rounds get to the max.
+     */
     private void loop() {
         round++;
         if (round > Game.NUM_OF_ROUNDS) {
@@ -66,6 +73,10 @@ public class QuestionController extends AbstractController {
         init();
     }
 
+    /**
+     * Send a waiting message to the user.
+     * Till all the users answer to current the question.
+     */
     private void waitingMessage(){
         PrintWriter outToClient = null;
         try {

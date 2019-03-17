@@ -41,10 +41,18 @@ public class Player {
         return score;
     }
 
+    /**
+     * Method to return the winning the player.
+     * @return
+     */
     public boolean isWinner() {
         return winner;
     }
 
+    /**
+     * Method to define the winner of this games.
+     * @return
+     */
     public void setWinner(boolean winner) {
         this.winner = winner;
     }

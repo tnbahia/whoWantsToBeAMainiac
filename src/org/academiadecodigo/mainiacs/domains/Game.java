@@ -63,6 +63,12 @@ public enum Game {
         return true;
     }
 
+    /**
+     * Method to check if the input name can be used.
+     * Wil return the amiability of the name.
+     * @param name
+     * @return
+     */
     private boolean nameAlreadyExists(String name) {
         for (Player player : players.values()) {
             if (player.getName().equals(name)) {
@@ -71,6 +77,12 @@ public enum Game {
         }
         return false;
     }
+
+    /**
+     * Method to see the rank of the game.
+     * Will check all the user score a show them.
+     * @return
+     */
 
     public String rank() {
         getWinner();
@@ -89,6 +101,11 @@ public enum Game {
         }
         return s.toString();
     }
+
+    /**
+     * Will check the winner of the game.
+     * Then will set the winner.
+     */
 
     private void getWinner() {
         int maxPoints = 0;
