@@ -14,7 +14,6 @@ public class ScoreController extends AbstractController {
 
     private ScoreView scoreView = new ScoreView();
     private Socket socket;
-    private LoginController loginController;
     
     /**
      * Send the final scores to be shown.
@@ -22,6 +21,7 @@ public class ScoreController extends AbstractController {
      */
     @Override
     public void init() {
+        scoreView.setScoreController(this);
         scoreView.show();
     }
     
@@ -31,7 +31,7 @@ public class ScoreController extends AbstractController {
      */
     public void setRestart(int answer){
         if(answer == 1){
-            loginController = new LoginController();
+            LoginController loginController = new LoginController();
             loginController.setSocket(socket);
             loginController.setGame(game);
             loginController.init();

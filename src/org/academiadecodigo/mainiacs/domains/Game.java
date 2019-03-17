@@ -6,12 +6,14 @@ import java.util.*;
 public enum Game {
     GAME;
 
+    public static final int NUM_OF_PLAYERS = 2;
+    public static final int NUM_OF_ROUNDS = 2;
     private HashMap<Socket, Player> players;
     private int[] questionsToAsk;
 
     Game() {
         players = new HashMap<>();
-        questionsToAsk = new int[10];
+        questionsToAsk = new int[NUM_OF_ROUNDS];
         for (int i = 0; i < questionsToAsk.length; i++) {
             int num = (int) (Math.random() * Questions.values().length);
             questionsToAsk[i] = num;
@@ -19,12 +21,12 @@ public enum Game {
     }
 
     public String getQuestion(int round) {
-        int questionNumber = questionsToAsk[round];
+        int questionNumber = questionsToAsk[round-1];
         return Questions.values()[questionNumber].getQuestion();
     }
 
     public String[] getOptions(int round) {
-        int questionNumber = questionsToAsk[round];
+        int questionNumber = questionsToAsk[round-1];
         return Questions.values()[questionNumber].getOptions();
     }
 
@@ -35,7 +37,7 @@ public enum Game {
     }
 
     private boolean checkAnswer(int round, int answer) {
-        int question = questionsToAsk[round];
+        int question = questionsToAsk[round-1];
         return Questions.values()[question].getRightAnswer() == answer;
     }
 
@@ -51,10 +53,10 @@ public enum Game {
         for (Player player: players.values()) {
             if (player.getName().equals(name)) {
                 System.out.println("nome já existe");
-                return false;
+                return true;
             }
         }
-        return true;
+        return false;
     }
 
     public String rank() {
@@ -62,6 +64,8 @@ public enum Game {
         for (Player player : players.values()) {
             results.put(player.getName(),player.getScore());
         }
+        //return "result";
+
         StringBuilder s = new StringBuilder();
         for (String name : results.keySet()) {
             s.append(name);

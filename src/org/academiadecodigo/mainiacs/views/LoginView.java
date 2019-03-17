@@ -38,11 +38,11 @@ public class LoginView extends AbstractView {
         System.out.println("espera resposta");
         String playerName = prompt.getUserInput(scanner);
         System.out.println("respondeu");
-        /*while (!loginController.addPlayer(playerName)) {
+        while (!loginController.addPlayer(playerName)) {
             //scanner.setMessage(Messages.ERROR_INVALID_PLAYER);
             playerName = prompt.getUserInput(scanner);
             System.out.println("aisodiuadosiu");
-        }*/
+        }
         System.out.println(playerName);
     }
 

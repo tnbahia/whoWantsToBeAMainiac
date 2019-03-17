@@ -15,6 +15,7 @@ public class QuestionController extends AbstractController {
     private Socket socket;
     private QuestionView questionView = new QuestionView();
     private static volatile int playersWaiting = 0;
+    private static volatile int playersAwake = 0;
     private int round = 0;
 
     /**
@@ -26,33 +27,43 @@ public class QuestionController extends AbstractController {
     public void init() {
         synchronized (Game.GAME) {
             playersWaiting++;
-            while (playersWaiting != 4) {
+            while (playersWaiting != Game.NUM_OF_PLAYERS) {
                 try {
-                    game.wait();
+                    Game.GAME.wait();
                 } catch (InterruptedException e) {
                     e.printStackTrace();
                 }
             }
+            System.out.println("----" + Thread.currentThread().getName());
             Game.GAME.notifyAll();
         }
-
-        if (Thread.activeCount() > 4) {
-            playersWaiting = 0;
+        System.out.println(Thread.currentThread().getName() + " - " + Thread.activeCount());
+        synchronized (Game.GAME) {
+            playersAwake++;
         }
-
-        questionView.setQuestionController(this);
-        questionView.show();
+        if (playersAwake == Game.NUM_OF_PLAYERS) {
+            System.out.println("no players waiting");
+            playersWaiting = 0;
+            playersAwake = 0;
+        }
         loop();
     }
 
-    public void loop() {
-        if (round != 10) {
-            round++;
-            init();
+    private void newQuestion() {
+        questionView.setQuestionController(this);
+        questionView.show();
+    }
+
+    private void loop() {
+        round++;
+        if (round > Game.NUM_OF_ROUNDS) {
+            scoreController = new ScoreController();
+            scoreController.setSocket(socket);
+            scoreController.setGame(Game.GAME);
+            scoreController.init();
         }
-        scoreController.setSocket(socket);
-        scoreController.setGame(game);
-        scoreController.init();
+        newQuestion();
+        init();
     }
 
     /**

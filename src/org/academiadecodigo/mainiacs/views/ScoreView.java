@@ -6,6 +6,7 @@ import org.academiadecodigo.mainiacs.controllers.ScoreController;
 
 import java.io.IOException;
 import java.io.PrintStream;
+import java.io.PrintWriter;
 import java.net.Socket;
 
 /**
@@ -14,13 +15,14 @@ import java.net.Socket;
  */
 
 public class ScoreView extends AbstractView {
+    private ScoreController scoreController;
     
     /**
      * Implements the method show with the ranking.
      */
     @Override
     public void show() {
-        Socket socket = ((ScoreController)controller).getSocket();
+        Socket socket = scoreController.getSocket();
         Prompt prompt = null;
         try {
             prompt = new Prompt(socket.getInputStream(), new PrintStream(socket.getOutputStream()));
@@ -28,12 +30,14 @@ public class ScoreView extends AbstractView {
             e.printStackTrace();
         }
 
-        System.out.println(((ScoreController)controller).getRank());
-
         String[] options = {"Yes", "No"};
         MenuInputScanner menuInputScanner = new MenuInputScanner(options);
-        menuInputScanner.setMessage("Restart Game?");
+        menuInputScanner.setMessage(scoreController.getRank() + "\n\n" + "Do you want to restart?");
         int answer = prompt.getUserInput(menuInputScanner);
-        ((ScoreController)controller).setRestart(answer);
+        scoreController.setRestart(answer);
+    }
+
+    public void setScoreController(ScoreController scoreController) {
+        this.scoreController = scoreController;
     }
 }

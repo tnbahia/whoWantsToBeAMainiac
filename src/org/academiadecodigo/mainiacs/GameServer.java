@@ -20,7 +20,7 @@ public class GameServer {
             ServerSocket serverSocket = new ServerSocket(DEFAULT_PORT);
 
             int playersLoggedIn = 0;
-            while (playersLoggedIn < 4) {
+            while (playersLoggedIn < Game.NUM_OF_PLAYERS) {
                 Socket newPlayer = serverSocket.accept();
                 new Thread(new Runnable() {
                     @Override
@@ -34,6 +34,7 @@ public class GameServer {
                 }).start();
                 playersLoggedIn++;
             }
+            System.out.println(Thread.currentThread().getName());
         } catch (IOException e) {
             e.printStackTrace();
         }
