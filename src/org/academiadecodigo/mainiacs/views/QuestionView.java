@@ -25,15 +25,13 @@ public class QuestionView implements View {
     @Override
     public void show() {
         Socket socket = questionController.getSocket();
-        Prompt prompt = null;
         try {
-            prompt = new Prompt(socket.getInputStream(), new PrintStream(socket.getOutputStream()));
+            Prompt prompt = new Prompt(socket.getInputStream(), new PrintStream(socket.getOutputStream()));
+            int answer = prompt.getUserInput(buildScanner());
+            checkAnswer(socket, answer);
         } catch (IOException e) {
             e.printStackTrace();
         }
-
-        int answer = prompt.getUserInput(buildScanner());
-        checkAnswer(socket, answer);
     }
 
     private MenuInputScanner buildScanner() {
@@ -58,12 +56,11 @@ public class QuestionView implements View {
      */
 
     private void checkAnswer(Socket socket, int answer){
-        PrintWriter outToClient = null;
         try {
-            outToClient = new PrintWriter(socket.getOutputStream(), true);
+            PrintWriter outToClient = new PrintWriter(socket.getOutputStream(), true);
+            outToClient.println(questionController.setAnswer(answer) ? Messages.RIGHT : Messages.WRONG);
         } catch (IOException e) {
             e.printStackTrace();
         }
-        outToClient.println(questionController.setAnswer(answer) ? Messages.RIGHT : Messages.WRONG);
     }
 }

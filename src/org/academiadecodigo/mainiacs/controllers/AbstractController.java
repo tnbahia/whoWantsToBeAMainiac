@@ -9,7 +9,7 @@ import org.academiadecodigo.mainiacs.domains.Game;
 abstract class AbstractController implements Controller {
     Game game;
 
-    public void setGame(Game game) {
+    void setGame(Game game) {
         this.game = game;
     }
 }

@@ -24,13 +24,12 @@ public class LoginView implements View {
     @Override
     public void show() {
         Socket socket = loginController.getSocket();
-        Prompt prompt = null;
         try {
-            prompt = new Prompt(socket.getInputStream(), new PrintStream(socket.getOutputStream()));
+            Prompt prompt = new Prompt(socket.getInputStream(), new PrintStream(socket.getOutputStream()));
+            getPlayerName(prompt);
         } catch (IOException e) {
             System.out.println("Unable to create prompt: " + e.getMessage());
         }
-        getPlayerName(prompt);
         welcomePlayer(socket);
     }
 
@@ -50,13 +49,12 @@ public class LoginView implements View {
     }
 
     private void welcomePlayer(Socket socket) {
-        PrintWriter outToClient = null;
         try {
-            outToClient = new PrintWriter(socket.getOutputStream(), true);
+            PrintWriter outToClient = new PrintWriter(socket.getOutputStream(), true);
+            outToClient.println(Messages.WELCOME);
         } catch (IOException e) {
             e.printStackTrace();
         }
-        outToClient.println(Messages.WELCOME);
     }
 
     /**

@@ -23,14 +23,13 @@ public class ScoreView implements View {
     @Override
     public void show() {
         Socket socket = scoreController.getSocket();
-        Prompt prompt = null;
         try {
-            prompt = new Prompt(socket.getInputStream(), new PrintStream(socket.getOutputStream()));
+            Prompt prompt = new Prompt(socket.getInputStream(), new PrintStream(socket.getOutputStream()));
+            int answer = prompt.getUserInput(buildScanner());
+            scoreController.setRestart(answer);
         } catch (IOException e) {
             e.printStackTrace();
         }
-        int answer = prompt.getUserInput(buildScanner());
-        scoreController.setRestart(answer);
     }
 
     private MenuInputScanner buildScanner() {
