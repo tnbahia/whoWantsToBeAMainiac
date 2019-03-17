@@ -7,6 +7,7 @@ import org.academiadecodigo.mainiacs.domains.utils.Messages;
 
 import java.io.IOException;
 import java.io.PrintStream;
+import java.io.PrintWriter;
 import java.net.Socket;
 
 /**
@@ -30,6 +31,7 @@ public class LoginView implements View {
             System.out.println("Unable to create prompt: " + e.getMessage());
         }
         getPlayerName(prompt);
+        welcomePlayer(socket);
     }
 
     private StringInputScanner buildScanner() {
@@ -45,6 +47,16 @@ public class LoginView implements View {
             scanner.setMessage(Messages.OCCUPIED_NAME);
             playerName = prompt.getUserInput(scanner);
         }
+    }
+
+    private void welcomePlayer(Socket socket) {
+        PrintWriter outToClient = null;
+        try {
+            outToClient = new PrintWriter(socket.getOutputStream(), true);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        outToClient.println(Messages.WELCOME);
     }
 
     /**

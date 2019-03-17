@@ -4,8 +4,8 @@ package org.academiadecodigo.mainiacs.domains;
  * Class that defines the player itself
  */
 
-public class Player {
-    private String name;
+class Player {
+    private final String name;
     private int score;
     private boolean winner;
     

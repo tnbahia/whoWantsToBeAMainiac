@@ -4,6 +4,6 @@ package org.academiadecodigo.mainiacs.controllers;
  * Defines the main (and common) method between all controllers
  */
 
-public interface Controller {
+interface Controller {
     void init();
 }

@@ -15,7 +15,7 @@ import java.net.Socket;
 
 public class QuestionController extends AbstractController {
     private Socket socket;
-    private QuestionView questionView = new QuestionView();
+    private final QuestionView questionView = new QuestionView();
     private static volatile int playersWaiting = 0;
     private static volatile int playersAwake = 0;
     private int round = 0;

@@ -6,7 +6,7 @@ import org.academiadecodigo.mainiacs.domains.Game;
  * Class to define the basic functions of a controller
  */
 
-public abstract class AbstractController implements Controller {
+abstract class AbstractController implements Controller {
     Game game;
 
     public void setGame(Game game) {

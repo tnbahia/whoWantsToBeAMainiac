@@ -1,7 +1,6 @@
 package org.academiadecodigo.mainiacs.controllers;
 
 import org.academiadecodigo.mainiacs.domains.Game;
-import org.academiadecodigo.mainiacs.domains.Player;
 import org.academiadecodigo.mainiacs.views.LoginView;
 import java.net.Socket;
 

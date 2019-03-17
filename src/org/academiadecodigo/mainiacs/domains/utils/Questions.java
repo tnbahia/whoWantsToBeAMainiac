@@ -358,9 +358,9 @@ public enum Questions {
                     "Synchronicity"},
             4);
     
-    private String question;
-    private String[] options;
-    private int rightAnswer;
+    private final String question;
+    private final String[] options;
+    private final int rightAnswer;
     
     
     /**

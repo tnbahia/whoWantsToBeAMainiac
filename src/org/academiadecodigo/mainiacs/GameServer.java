@@ -12,7 +12,7 @@ import java.net.Socket;
  * Creates the socket and waits for players connections, creating a thread for each player.
  */
 
-public class GameServer {
+class GameServer {
     private static final int DEFAULT_PORT = 8080;
 
     public static void main(String[] args) {
