@@ -21,10 +21,9 @@ public class QuestionController extends AbstractController {
     private int round = 0;
 
     /**
-     * Sets the loop for the questions.
+     * Sets the question stage.
      * Ensures the questions are all sent at the same time.
      */
-
     @Override
     public void init() {
         waitForOtherPlayers();
@@ -33,7 +32,11 @@ public class QuestionController extends AbstractController {
         newQuestion();
         init();
     }
-
+    
+    /**
+     * Method to ensure that the question is sent to all players at the same time.
+     */
+    
     private void waitForOtherPlayers() {
         synchronized (Game.GAME) {
             playersWaiting++;
@@ -53,7 +56,10 @@ public class QuestionController extends AbstractController {
             playersAwake = 0;
         }
     }
-
+    
+    /**
+     * Checks if the number of rounds have been played.
+     */
     private void checkForEndGame() {
         if (round > Game.NUM_OF_ROUNDS) {
             ScoreController scoreController = new ScoreController();
@@ -62,15 +68,17 @@ public class QuestionController extends AbstractController {
             scoreController.init();
         }
     }
-
+    
+    /**
+     * Gets new question.
+     */
     private void newQuestion() {
         questionView.setQuestionController(this);
         questionView.show();
     }
 
     /**
-     * Send a waiting message to the user.
-     * Till all the users answer to current the question.
+     * Sends a waiting message to the user until the users are ready to play.
      */
     private void waitingMessage(){
         try {
@@ -91,7 +99,6 @@ public class QuestionController extends AbstractController {
 
     /**
      * Gets the array of Strings that are the options.
-     *
      * @return
      */
     public String[] getOptions() {
@@ -100,7 +107,6 @@ public class QuestionController extends AbstractController {
 
     /**
      * Checks if the answer was correct or not.
-     *
      * @param answer
      */
     public boolean setAnswer(int answer) {
@@ -109,7 +115,6 @@ public class QuestionController extends AbstractController {
 
     /**
      * Sets the correct socket.
-     *
      * @param socket
      */
     public void setSocket(Socket socket) {
@@ -117,8 +122,7 @@ public class QuestionController extends AbstractController {
     }
 
     /**
-     * gets the correct socket.
-     *
+     * Gets the socket information.
      * @return
      */
     public Socket getSocket() {

@@ -22,7 +22,10 @@ public class LoginController extends AbstractController{
         loginView.show();
         startGame();
     }
-
+    
+    /**
+     * Method to start the Game itself.
+     */
     private void startGame() {
         QuestionController questionController = new QuestionController();
         questionController.setSocket(socket);
@@ -53,7 +56,11 @@ public class LoginController extends AbstractController{
     public Socket getSocket() {
         return socket;
     }
-
+    
+    /**
+     * Sets the game the controller will interact with.
+     * @param game
+     */
     public void setGame(Game game){
         this.game = game;
     }

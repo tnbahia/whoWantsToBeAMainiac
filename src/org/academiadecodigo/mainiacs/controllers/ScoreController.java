@@ -25,7 +25,6 @@ public class ScoreController extends AbstractController {
 
     /**
      * Deals with whether to restart the game or end the application.
-     *
      * @param answer
      */
     public void setRestart(int answer) {
@@ -40,8 +39,7 @@ public class ScoreController extends AbstractController {
     }
 
     /**
-     * Get the player rank in the game.
-     *
+     * Get the player ranking for the game.
      * @return
      */
     public String getRank() {
@@ -50,7 +48,6 @@ public class ScoreController extends AbstractController {
 
     /**
      * Sets the socket for the game.
-     *
      * @param socket
      */
     public void setSocket(Socket socket) {
@@ -58,8 +55,7 @@ public class ScoreController extends AbstractController {
     }
 
     /**
-     * Sets the socket to be passed to another class.
-     *
+     * Gets the socket to be passed to another class.
      * @return
      */
     public Socket getSocket() {

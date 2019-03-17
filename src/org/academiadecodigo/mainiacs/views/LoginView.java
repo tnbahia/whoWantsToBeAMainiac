@@ -16,6 +16,7 @@ import java.net.Socket;
  */
 
 public class LoginView implements View {
+    
     private LoginController loginController;
 
     /**
@@ -32,15 +33,23 @@ public class LoginView implements View {
         }
         welcomePlayer(socket);
     }
-
-    private StringInputScanner buildScanner() {
+    
+    /**
+     * Creates the initial screen.
+     * @return
+     */
+    private StringInputScanner createScanner() {
         StringInputScanner scanner = new StringInputScanner();
         scanner.setMessage(Messages.LOGO + Messages.LOGIN_PLAYER);
         return scanner;
     }
-
+    
+    /**
+     * Sets the prompt to get the player name.
+     * @param prompt
+     */
     private void getPlayerName(Prompt prompt) {
-        StringInputScanner scanner = buildScanner();
+        StringInputScanner scanner = createScanner();
         String playerName = prompt.getUserInput(scanner);
         while (!loginController.addPlayer(playerName)) {
             scanner.setMessage(Messages.OCCUPIED_NAME);

@@ -5,5 +5,10 @@ package org.academiadecodigo.mainiacs.views;
  */
 
 interface View {
+
+    /**
+     * Defines the method to be implemented by all Views.
+     */
+
     void show();
 }
