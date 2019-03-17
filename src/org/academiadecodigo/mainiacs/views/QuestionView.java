@@ -14,13 +14,11 @@ import java.net.Socket;
  */
 
 public class QuestionView implements View {
-    
+    private QuestionController questionController;
+
     /**
      * Implements the method show with the Questions.
      */
-
-    private QuestionController questionController;
-
 
     @Override
     public void show() {

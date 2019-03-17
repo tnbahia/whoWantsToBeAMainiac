@@ -22,12 +22,15 @@ public class LoginController extends AbstractController{
         LoginView loginView = new LoginView();
         loginView.setLoginController(this);
         loginView.show();
+        startGame();
+    }
+
+    private void startGame() {
         QuestionController questionController = new QuestionController();
         questionController.setSocket(socket);
         questionController.setGame(game);
         questionController.init();
     }
-
 
     /**
      * Sets the player in question. Takes a String as an argument that will be stored as the player name.

@@ -11,7 +11,6 @@ import java.net.Socket;
  */
 
 public class QuestionController extends AbstractController {
-    private ScoreController scoreController;
     private Socket socket;
     private QuestionView questionView = new QuestionView();
     private static volatile int playersWaiting = 0;
@@ -34,15 +33,12 @@ public class QuestionController extends AbstractController {
                     e.printStackTrace();
                 }
             }
-            System.out.println("----" + Thread.currentThread().getName());
             Game.GAME.notifyAll();
         }
-        System.out.println(Thread.currentThread().getName() + " - " + Thread.activeCount());
         synchronized (Game.GAME) {
             playersAwake++;
         }
         if (playersAwake == Game.NUM_OF_PLAYERS) {
-            System.out.println("no players waiting");
             playersWaiting = 0;
             playersAwake = 0;
         }
@@ -57,22 +53,13 @@ public class QuestionController extends AbstractController {
     private void loop() {
         round++;
         if (round > Game.NUM_OF_ROUNDS) {
-            scoreController = new ScoreController();
+            ScoreController scoreController = new ScoreController();
             scoreController.setSocket(socket);
             scoreController.setGame(Game.GAME);
             scoreController.init();
         }
         newQuestion();
         init();
-    }
-
-    /**
-     * Sets the controller
-     *
-     * @param scoreController
-     */
-    public void setScoreController(ScoreController scoreController) {
-        this.scoreController = scoreController;
     }
 
     /**

@@ -1,6 +1,5 @@
 package org.academiadecodigo.mainiacs.controllers;
 
-
 import org.academiadecodigo.mainiacs.views.ScoreView;
 
 import java.net.Socket;
@@ -35,7 +34,6 @@ public class ScoreController extends AbstractController {
             loginController.setGame(game);
             loginController.init();
         } else {
-            System.out.println("Game Over");
             System.exit(0);
         }
     }

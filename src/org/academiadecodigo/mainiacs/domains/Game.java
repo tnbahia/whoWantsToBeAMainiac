@@ -6,10 +6,10 @@ import java.util.*;
 public enum Game {
     GAME;
 
-    public static final int NUM_OF_PLAYERS = 2;
-    public static final int NUM_OF_ROUNDS = 20;
+    public static final int NUM_OF_PLAYERS = 4;
+    public static final int NUM_OF_ROUNDS = 10;
     private HashMap<Socket, Player> players;
-    public int[] questionsToAsk;
+    private int[] questionsToAsk;
 
     Game() {
         players = new HashMap<>();
@@ -60,7 +60,6 @@ public enum Game {
     private boolean nameAlreadyExists(String name) {
         for (Player player : players.values()) {
             if (player.getName().equals(name)) {
-                System.out.println("nome já existe");
                 return true;
             }
         }
@@ -72,7 +71,6 @@ public enum Game {
         for (Player player : players.values()) {
             results.put(player.getName(), player.getScore());
         }
-        //return "result";
 
         StringBuilder s = new StringBuilder();
         for (String name : results.keySet()) {
