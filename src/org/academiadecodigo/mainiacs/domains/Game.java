@@ -32,10 +32,12 @@ public enum Game {
         return Questions.values()[questionNumber].getOptions();
     }
 
-    public void setAnswer(Socket socket, int round, int answer) {
+    public boolean setAnswer(Socket socket, int round, int answer) {
         if (checkAnswer(round, answer)) {
             players.get(socket).setScore(1);
+            return true;
         }
+        return false;
     }
 
     private boolean checkAnswer(int round, int answer) {

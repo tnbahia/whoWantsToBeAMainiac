@@ -3,9 +3,11 @@ package org.academiadecodigo.mainiacs.views;
 import org.academiadecodigo.bootcamp.Prompt;
 import org.academiadecodigo.bootcamp.scanners.menu.MenuInputScanner;
 import org.academiadecodigo.mainiacs.controllers.QuestionController;
+import org.academiadecodigo.mainiacs.domains.utils.Messages;
 
 import java.io.IOException;
 import java.io.PrintStream;
+import java.io.PrintWriter;
 import java.net.Socket;
 
 /**
@@ -36,10 +38,20 @@ public class QuestionView extends AbstractView {
         menuInputScanner.setMessage(questionController.getQuestion());
 
         int answer = prompt.getUserInput(menuInputScanner);
-        questionController.setAnswer(answer);
+        checkAnswer(socket, answer);
     }
 
     public void setQuestionController(QuestionController questionController){
         this.questionController = questionController;
+    }
+    
+    private void checkAnswer(Socket socket, int answer){
+        PrintWriter outToClient = null;
+        try {
+            outToClient = new PrintWriter(socket.getOutputStream(), true);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        outToClient.println(questionController.setAnswer(answer) ? Messages.RIGHT : Messages.WRONG);
     }
 }
