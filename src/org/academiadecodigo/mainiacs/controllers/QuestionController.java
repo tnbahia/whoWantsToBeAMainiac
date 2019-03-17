@@ -27,6 +27,14 @@ public class QuestionController extends AbstractController {
 
     @Override
     public void init() {
+        waitForOtherPlayers();
+        round++;
+        checkForEndGame();
+        newQuestion();
+        init();
+    }
+
+    private void waitForOtherPlayers() {
         synchronized (Game.GAME) {
             playersWaiting++;
             while (playersWaiting != Game.NUM_OF_PLAYERS) {
@@ -37,40 +45,27 @@ public class QuestionController extends AbstractController {
                     e.printStackTrace();
                 }
             }
-            Game.GAME.notifyAll();
-        }
-        synchronized (Game.GAME) {
             playersAwake++;
+            Game.GAME.notifyAll();
         }
         if (playersAwake == Game.NUM_OF_PLAYERS) {
             playersWaiting = 0;
             playersAwake = 0;
         }
-        loop();
     }
 
-    /**
-     * Show a new question to the user.
-     */
-    private void newQuestion() {
-        questionView.setQuestionController(this);
-        questionView.show();
-    }
-
-    /**
-     * Will give a new question to the user.
-     * This will stop when rounds get to the max.
-     */
-    private void loop() {
-        round++;
+    private void checkForEndGame() {
         if (round > Game.NUM_OF_ROUNDS) {
             ScoreController scoreController = new ScoreController();
             scoreController.setSocket(socket);
             scoreController.setGame(Game.GAME);
             scoreController.init();
         }
-        newQuestion();
-        init();
+    }
+
+    private void newQuestion() {
+        questionView.setQuestionController(this);
+        questionView.show();
     }
 
     /**
@@ -78,13 +73,12 @@ public class QuestionController extends AbstractController {
      * Till all the users answer to current the question.
      */
     private void waitingMessage(){
-        PrintWriter outToClient = null;
         try {
-            outToClient = new PrintWriter(socket.getOutputStream(), true);
+            PrintWriter outToClient = new PrintWriter(socket.getOutputStream(), true);
+            outToClient.println(Messages.WAITING);
         } catch (IOException e) {
             e.printStackTrace();
         }
-        outToClient.println(Messages.WAITING);
     }
     
     /**

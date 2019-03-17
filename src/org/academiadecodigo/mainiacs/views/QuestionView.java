@@ -32,11 +32,14 @@ public class QuestionView implements View {
             e.printStackTrace();
         }
 
+        int answer = prompt.getUserInput(buildScanner());
+        checkAnswer(socket, answer);
+    }
+
+    private MenuInputScanner buildScanner() {
         MenuInputScanner menuInputScanner = new MenuInputScanner(questionController.getOptions());
         menuInputScanner.setMessage(questionController.getQuestion());
-
-        int answer = prompt.getUserInput(menuInputScanner);
-        checkAnswer(socket, answer);
+        return menuInputScanner;
     }
 
     /**

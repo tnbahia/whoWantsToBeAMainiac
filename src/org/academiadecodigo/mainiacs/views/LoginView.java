@@ -16,7 +16,7 @@ import java.net.Socket;
 
 public class LoginView implements View {
     private LoginController loginController;
-    
+
     /**
      * Implements the method show with the Login information.
      */
@@ -25,14 +25,22 @@ public class LoginView implements View {
         Socket socket = loginController.getSocket();
         Prompt prompt = null;
         try {
-            prompt = new Prompt(socket.getInputStream(),new PrintStream(socket.getOutputStream()));
+            prompt = new Prompt(socket.getInputStream(), new PrintStream(socket.getOutputStream()));
         } catch (IOException e) {
-            e.printStackTrace();
+            System.out.println("Unable to create prompt: " + e.getMessage());
         }
+        getPlayerName(prompt);
+    }
+
+    private StringInputScanner buildScanner() {
         StringInputScanner scanner = new StringInputScanner();
         scanner.setMessage(Messages.LOGO + Messages.LOGIN_PLAYER);
-        String playerName = prompt.getUserInput(scanner);
+        return scanner;
+    }
 
+    private void getPlayerName(Prompt prompt) {
+        StringInputScanner scanner = buildScanner();
+        String playerName = prompt.getUserInput(scanner);
         while (!loginController.addPlayer(playerName)) {
             scanner.setMessage(Messages.OCCUPIED_NAME);
             playerName = prompt.getUserInput(scanner);
@@ -42,7 +50,7 @@ public class LoginView implements View {
     /**
      * Sets the controller for the class.
      */
-    public void setLoginController(LoginController loginController){
+    public void setLoginController(LoginController loginController) {
         this.loginController = loginController;
     }
 }

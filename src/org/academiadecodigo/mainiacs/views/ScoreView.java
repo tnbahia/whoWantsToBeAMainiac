@@ -29,16 +29,22 @@ public class ScoreView implements View {
         } catch (IOException e) {
             e.printStackTrace();
         }
+        int answer = prompt.getUserInput(buildScanner());
+        scoreController.setRestart(answer);
+    }
 
+    private MenuInputScanner buildScanner() {
         String[] options = {Messages.YES, Messages.NO};
         MenuInputScanner menuInputScanner = new MenuInputScanner(options);
 
-        menuInputScanner.setMessage(Messages.OVER + "\n\n" + Messages.SCORE_BAR + "\n" +
-                                    scoreController.getRank() + "\n" +
-                                    Messages.SCORE_BAR + "\n\n" + Messages.GAME_RESTART);
+        menuInputScanner.setMessage(
+                Messages.OVER + "\n\n" +
+                Messages.SCORE_BAR + "\n" +
+                scoreController.getRank() + "\n" +
+                Messages.SCORE_BAR + "\n\n" +
+                Messages.GAME_RESTART);
 
-        int answer = prompt.getUserInput(menuInputScanner);
-        scoreController.setRestart(answer);
+        return menuInputScanner;
     }
 
     public void setScoreController(ScoreController scoreController) {
