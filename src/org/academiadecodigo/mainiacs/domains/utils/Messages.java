@@ -20,13 +20,12 @@ public class Messages {
     public static final String WAITING = "⏳ Waiting for other players...";
     public static final String QUIT = " \uD83D\uDC4D Thank you for playing.";
     public static final String LOGO = "\n" + "WHO WANTS TO BE A \n" +
-            ".88b  d88.  .d8b.  d8b   db d888888b  .d8b.   .o88b. \n" +
-            "88'YbdP`88 d8' `8b 888o  88   `88'   d8' `8b d8P  Y8 \n" +
-            "88  88  88 88ooo88 88V8o 88    88    88ooo88 8P      \n" +
-            "88  88  88 88~~~88 88 V8o88    88    88~~~88 8b      \n" +
-            "88  88  88 88   88 88  V888   .88.   88   88 Y8b  d8 \n" +
-            "YP  YP  YP YP   YP VP   V8P Y888888P YP   YP  `Y88P' \n\n" +
-            "*****************************************************\n";
+            "oooo     oooo      o      ooooo oooo   oooo ooooo      o       oooooooo8 \n" +
+            " 8888o   888      888      888   8888o  88   888      888    o888     88 \n" +
+            " 88 888o8 88     8  88     888   88 888o88   888     8  88   888         \n" +
+            " 88  888  88    8oooo88    888   88   8888   888    8oooo88  888o     oo \n" +
+            "o88o  8  o88o o88o  o888o o888o o88o    88  o888o o88o  o888o 888oooo88  \n" +
+            "************************************************************************ \n";
     public static final String OVER = " \n" +
             " d888b   .d8b.  .88b  d88. d88888b    .d88b.  db    db d88888b d8888b. \n" +
             "88' Y8b d8' `8b 88'YbdP`88 88'       .8P  Y8. 88    88 88'     88  `8D \n" +
