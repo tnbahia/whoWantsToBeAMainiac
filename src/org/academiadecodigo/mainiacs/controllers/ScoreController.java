@@ -40,10 +40,10 @@ public class ScoreController extends AbstractController {
             try {
                 PrintWriter outToClient = new PrintWriter(socket.getOutputStream(), true);
                 outToClient.println(Messages.QUIT);
+                socket.close();
             } catch (IOException e) {
                 e.printStackTrace();
             }
-            System.exit(0);
         }
     }
 
