@@ -1,7 +1,10 @@
 package org.academiadecodigo.mainiacs.controllers;
 
+import org.academiadecodigo.mainiacs.domains.utils.Messages;
 import org.academiadecodigo.mainiacs.views.ScoreView;
 
+import java.io.IOException;
+import java.io.PrintWriter;
 import java.net.Socket;
 
 /**
@@ -34,6 +37,12 @@ public class ScoreController extends AbstractController {
             loginController.setGame(game);
             loginController.init();
         } else {
+            try {
+                PrintWriter outToClient = new PrintWriter(socket.getOutputStream(), true);
+                outToClient.println(Messages.QUIT);
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
             System.exit(0);
         }
     }
