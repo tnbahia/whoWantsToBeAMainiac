@@ -1,0 +1,36 @@
+<project name="WhoWantsToBeAMainiac" default="jarfile">
+
+    <target name="init" description="Initializes properties">
+        <property name="project.name" value="WhoWantsToBeAMainiac" />
+        <property name="main.class" value="org.academiadecodigo.mainiacs"/>
+        <property name="classes.dir" value="build/classes"/>
+        <property name="lib.dir" value="lib"/>
+        <property name="resource.dir" value="resources"/>
+        <path id="classpath">
+            <fileset dir="lib" includes="**/*.jar"/>
+        </path>
+    </target>
+
+    <target name="prepare" description="Creates the build and classes dirs" depends="init">
+        <mkdir dir="${classes.dir}"/>
+    </target>
+
+    <target name="compile" description="Compiles the code" depends="prepare">
+        <javac srcdir="src" destdir="${classes.dir}">
+            <classpath refid="classpath"/>
+        </javac>
+    </target>
+
+    <target name="jarfile" description="Creates the jar" depends="compile">
+        <jar destfile="build/${project.name}.jar" basedir="${classes.dir}">
+            <manifest>
+                <attribute name="Main-Class" value="${main.class}"/>
+                <attribute name="Class-Path" value="${lib.dir} ${resource.dir}"/>
+            </manifest>
+            <zipgroupfileset dir="lib" includes="*.jar"/>
+            <fileset dir=".">
+                <include name="**/${resource.dir}/**"/>
+            </fileset>
+        </jar>
+    </target>
+</project>
